@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - IoT
-  - Embedded Systems
-  - RTOS
-  - Microcontrollers
   - AWS
+  - Embedded Systems
+  - IoT
+  - Microcontrollers
+  - RTOS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -28,8 +28,8 @@ apis:
     humanURL: https://aws.amazon.com/freertos/
     baseURL: https://iot.amazonaws.com
     tags:
-      - IoT
       - Embedded Systems
+      - IoT
       - RTOS
     properties:
       - type: Documentation
