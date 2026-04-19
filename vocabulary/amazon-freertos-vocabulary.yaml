@@ -1,0 +1,77 @@
+vocabulary:
+  id: amazon-freertos-vocabulary
+  name: Amazon FreeRTOS Vocabulary
+  description: Controlled vocabulary for Amazon FreeRTOS microcontroller IoT device management and OTA update orchestration.
+  version: 1.0.0
+  provider: Amazon Web Services
+  resources:
+  - name: SoftwareConfiguration
+    description: A FreeRTOS firmware configuration specifying libraries and settings for a target hardware platform.
+    operations:
+    - createSoftwareConfiguration
+    - describeSoftwareConfiguration
+    - listSoftwareConfigurations
+    - updateSoftwareConfiguration
+    - deleteSoftwareConfiguration
+  - name: OtaUpdate
+    description: An over-the-air (OTA) firmware update job targeting FreeRTOS device groups.
+    operations:
+    - createOtaUpdate
+    - getOtaUpdate
+    - listOtaUpdates
+    - deleteOtaUpdate
+  - name: Device
+    description: A FreeRTOS-capable microcontroller registered as an AWS IoT thing.
+    operations:
+    - createThing
+    - describeThing
+    - listThings
+    - updateThing
+    - deleteThing
+  - name: OtaFile
+    description: A signed firmware binary included in an OTA update job.
+    operations: []
+  - name: Tag
+    description: Key-value metadata label applied to FreeRTOS management resources.
+    operations:
+    - listTagsForResource
+    - tagResource
+    - untagResource
+  actions:
+  - name: create
+    description: Provision a new resource.
+  - name: describe
+    description: Retrieve full resource details.
+  - name: list
+    description: Enumerate resources.
+  - name: update
+    description: Modify a resource.
+  - name: delete
+    description: Remove a resource.
+  - name: tag
+    description: Attach tags to a resource.
+  concepts:
+  - term: FreeRTOS
+    definition: An open-source real-time operating system kernel for microcontrollers, extended by Amazon with IoT connectivity libraries.
+  - term: OTA (Over-the-Air) Update
+    definition: Wireless delivery of new firmware to embedded devices without physical access.
+  - term: MQTT
+    definition: A lightweight publish-subscribe messaging protocol used for IoT device communication and OTA update delivery.
+  - term: Thing Group
+    definition: A logical grouping of AWS IoT things (devices) used for bulk OTA targeting.
+  - term: Code Signing
+    definition: Cryptographic signing of firmware binaries to ensure authenticity and integrity before OTA installation.
+  - term: FreeRTOS Libraries
+    definition: AWS-maintained libraries for TLS, MQTT, OTA, corePKCS11, and other IoT connectivity features bundled into FreeRTOS configurations.
+  - term: Hardware Platform
+    definition: The microcontroller or SoC target for a FreeRTOS software configuration (e.g., ESP32, STM32, Renesas RX).
+  - term: SNAPSHOT vs CONTINUOUS
+    definition: 'OTA target selection modes: SNAPSHOT targets existing devices, CONTINUOUS targets all devices added to a group in the future.'
+  tags:
+  - IoT
+  - Embedded Systems
+  - RTOS
+  - Microcontrollers
+  - OTA Updates
+  - Firmware
+  - AWS

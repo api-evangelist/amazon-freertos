@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/json-schema/amazon-freertos-device-schema.json",
+  "title": "Device",
+  "description": "A FreeRTOS-capable microcontroller device registered in AWS IoT.",
+  "type": "object",
+  "properties": {
+    "thingName": {
+      "type": "string",
+      "description": "IoT thing name for the device."
+    },
+    "thingArn": {
+      "type": "string",
+      "description": "ARN of the IoT thing."
+    },
+    "thingTypeName": {
+      "type": "string",
+      "description": "Type classification of the device."
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Device attributes (hardware model, firmware version, etc.)"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Thing record version."
+    }
+  },
+  "required": [
+    "thingName"
+  ]
+}

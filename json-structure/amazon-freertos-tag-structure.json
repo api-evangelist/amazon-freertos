@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/json-structure/amazon-freertos-tag-structure.json",
+  "name": "Tag",
+  "description": "A key-value metadata label applied to a FreeRTOS management resource.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "key",
+      "type": "string",
+      "description": "Tag key.",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Tag value.",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "otaUpdateId": "firmware-update-v2-0",
+  "otaUpdateArn": "arn:aws:iot:us-east-1:123456789012:otaupdate/firmware-update-v2-0",
+  "otaUpdateStatus": "CREATE_COMPLETE",
+  "description": "FreeRTOS v202107.00 OTA update with security patches",
+  "targets": [
+    "arn:aws:iot:us-east-1:123456789012:thinggroup/production-sensors"
+  ],
+  "protocols": [
+    "MQTT"
+  ],
+  "creationDate": "2025-06-01T10:00:00Z",
+  "lastModifiedDate": "2025-06-01T10:05:00Z",
+  "awsIotJobId": "ota-job-v2-0",
+  "awsIotJobArn": "arn:aws:iot:us-east-1:123456789012:job/ota-job-v2-0"
+}

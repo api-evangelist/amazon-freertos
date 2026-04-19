@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/json-structure/amazon-freertos-software-configuration-structure.json",
+  "name": "SoftwareConfiguration",
+  "description": "A FreeRTOS software configuration specifying firmware libraries, settings, and target hardware platform.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "softwareConfigurationId",
+      "type": "string",
+      "description": "Unique ID of the software configuration."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of the software configuration.",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Optional description."
+    },
+    {
+      "name": "arn",
+      "type": "string",
+      "description": "ARN of the software configuration."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Status of the configuration.",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "description": "Version string."
+    },
+    {
+      "name": "hardwarePlatform",
+      "type": "string",
+      "description": "Target microcontroller platform (e.g., ESP32, STM32).",
+      "required": true
+    },
+    {
+      "name": "creationDate",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "lastUpdatedDate",
+      "type": "datetime",
+      "description": ""
+    }
+  ]
+}

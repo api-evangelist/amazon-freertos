@@ -1,0 +1,11 @@
+{
+  "softwareConfigurationId": "sc-abc12345",
+  "name": "esp32-production-config",
+  "description": "FreeRTOS v202107.00 production config for ESP32",
+  "arn": "arn:aws:freertos:us-east-1:123456789012:configuration/esp32-production-config",
+  "status": "ACTIVE",
+  "version": "1",
+  "hardwarePlatform": "ESP32-D0WD",
+  "creationDate": "2025-01-15T09:00:00Z",
+  "lastUpdatedDate": "2025-06-01T10:00:00Z"
+}

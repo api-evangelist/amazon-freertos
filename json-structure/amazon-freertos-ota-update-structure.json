@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/json-structure/amazon-freertos-ota-update-structure.json",
+  "name": "OtaUpdate",
+  "description": "An over-the-air firmware update job for FreeRTOS microcontroller devices.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "otaUpdateId",
+      "type": "string",
+      "description": "Unique OTA update identifier.",
+      "required": true
+    },
+    {
+      "name": "otaUpdateArn",
+      "type": "string",
+      "description": "ARN of the OTA update."
+    },
+    {
+      "name": "otaUpdateStatus",
+      "type": "string",
+      "description": "Current status of the OTA update.",
+      "enum": [
+        "CREATE_PENDING",
+        "CREATE_IN_PROGRESS",
+        "CREATE_COMPLETE",
+        "CREATE_FAILED"
+      ]
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "targets",
+      "type": "array",
+      "description": "ARNs of target devices, things, or thing groups.",
+      "required": true
+    },
+    {
+      "name": "protocols",
+      "type": "array",
+      "description": "Delivery protocols (MQTT or HTTP)."
+    },
+    {
+      "name": "creationDate",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "lastModifiedDate",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "awsIotJobId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "awsIotJobArn",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}

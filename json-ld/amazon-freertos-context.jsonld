@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "freertos": "https://aws.amazon.com/freertos/vocabulary/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "SoftwareConfiguration": "freertos:SoftwareConfiguration",
+    "OtaUpdate": "freertos:OtaUpdate",
+    "Device": "schema:Thing",
+    "OtaFile": "freertos:OtaFile",
+    "Tag": "schema:PropertyValue",
+    "softwareConfigurationId": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "hardwarePlatform": {
+      "@id": "freertos:hardwarePlatform",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "freertos:status",
+      "@type": "xsd:string"
+    },
+    "otaUpdateId": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "targets": {
+      "@id": "freertos:targets"
+    },
+    "otaUpdateStatus": {
+      "@id": "freertos:otaUpdateStatus",
+      "@type": "xsd:string"
+    },
+    "thingName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "creationDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "lastModifiedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

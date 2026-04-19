@@ -1,0 +1,11 @@
+{
+  "thingName": "sensor-node-001",
+  "thingArn": "arn:aws:iot:us-east-1:123456789012:thing/sensor-node-001",
+  "thingTypeName": "ESP32-Sensor",
+  "attributes": {
+    "hardwarePlatform": "ESP32-D0WD",
+    "firmwareVersion": "2.0.0",
+    "location": "warehouse-a-rack-12"
+  },
+  "version": 3
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/json-structure/amazon-freertos-ota-file-structure.json",
+  "name": "OtaFile",
+  "description": "A firmware file included in a FreeRTOS OTA update job.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "fileName",
+      "type": "string",
+      "description": "Name of the OTA file on the device.",
+      "required": true
+    },
+    {
+      "name": "fileVersion",
+      "type": "string",
+      "description": "Version of the firmware file."
+    },
+    {
+      "name": "fileLocation",
+      "type": "object",
+      "description": "S3 or Stream location of the firmware binary."
+    },
+    {
+      "name": "codeSigning",
+      "type": "object",
+      "description": "Code signing configuration for the firmware file."
+    },
+    {
+      "name": "fileType",
+      "type": "int32",
+      "description": "User-defined file type (0-255)."
+    }
+  ]
+}

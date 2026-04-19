@@ -1,0 +1,17 @@
+{
+  "fileName": "firmware.bin",
+  "fileVersion": "2.0.0",
+  "fileLocation": {
+    "s3Location": {
+      "bucket": "my-ota-bucket",
+      "key": "freertos/firmware-v2.0.0.bin",
+      "version": "abc123"
+    }
+  },
+  "codeSigning": {
+    "startSigningJobParameter": {
+      "signingProfileName": "freertos-signing-profile"
+    }
+  },
+  "fileType": 0
+}
