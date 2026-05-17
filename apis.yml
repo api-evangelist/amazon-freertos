@@ -111,7 +111,7 @@ common:
   url: capabilities/amazon-freertos-device-management.yaml
 - type: Vocabulary
   url: vocabulary/amazon-freertos-vocabulary.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-freertos-context.jsonld
 - type: Features
   data:
