@@ -1,10 +1,8 @@
 aid: amazon-freertos
 name: Amazon FreeRTOS
-description: >-
-  Amazon FreeRTOS is an open source, real-time operating system for
-  microcontrollers that makes it easy to program, deploy, secure, connect, and
-  manage small, low-power edge devices. It extends the FreeRTOS kernel with
-  libraries for secure connectivity, over-the-air updates, and more.
+description: Amazon FreeRTOS is an open source, real-time operating system for microcontrollers that makes it easy to program,
+  deploy, secure, connect, and manage small, low-power edge devices. It extends the FreeRTOS kernel with libraries for secure
+  connectivity, over-the-air updates, and more.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -13,18 +11,15 @@ tags:
 - IoT
 - Microcontrollers
 - RTOS
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - aid: amazon-freertos:amazon-freertos-api
   name: Amazon FreeRTOS API
-  description: >-
-    The Amazon FreeRTOS API provides programmatic access to manage FreeRTOS
-    software configurations and over-the-air update jobs for IoT devices
-    running FreeRTOS.
+  description: The Amazon FreeRTOS API provides programmatic access to manage FreeRTOS software configurations and over-the-air
+    update jobs for IoT devices running FreeRTOS.
   humanURL: https://aws.amazon.com/freertos/
   baseURL: https://iot.amazonaws.com
   tags:
@@ -74,6 +69,12 @@ apis:
     url: https://aws.amazon.com/freertos/faqs/
   - type: APIReference
     url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
+  - type: NaftikoCapability
+    url: capabilities/amazon-freertos-ota-updates.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-freertos-software-configurations.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-freertos-tags.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/freertos/
@@ -105,10 +106,6 @@ common:
   url: https://stackoverflow.com/questions/tagged/amazon-freertos
 - type: SpectralRules
   url: rules/amazon-freertos-spectral-rules.yml
-- type: NaftikoCapability
-  url: capabilities/shared/freertos.yaml
-- type: NaftikoCapability
-  url: capabilities/amazon-freertos-device-management.yaml
 - type: Vocabulary
   url: vocabulary/amazon-freertos-vocabulary.yaml
 - type: JSONLD
@@ -162,15 +159,15 @@ common:
 - type: Integrations
   url: https://aws.amazon.com/marketplace
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: 'Why AWS Marketplace?'
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

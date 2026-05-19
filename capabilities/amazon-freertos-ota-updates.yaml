@@ -1,0 +1,217 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon FreeRTOS Management API — OTA Updates
+  description: 'Amazon FreeRTOS Management API — OTA Updates. 4 operations. Lead operation: Create OTA Update. Self-contained
+    Naftiko capability covering one Amazon Freertos business surface.'
+  tags:
+  - Amazon Freertos
+  - OTA Updates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_FREERTOS_API_KEY: AMAZON_FREERTOS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-freertos-ota-updates
+    baseUri: https://iot.{region}.amazonaws.com
+    description: Amazon FreeRTOS Management API — OTA Updates business capability. Self-contained, no shared references.
+    resources:
+    - name: otaUpdates
+      path: /otaUpdates
+      operations:
+      - name: createotaupdate
+        method: POST
+        description: Create OTA Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listotaupdates
+        method: GET
+        description: List OTA Updates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          description: Maximum results.
+        - name: nextToken
+          in: query
+          type: string
+          description: Pagination token.
+        - name: otaUpdateStatus
+          in: query
+          type: string
+          description: Filter by OTA update status.
+    - name: otaUpdates-otaUpdateId
+      path: /otaUpdates/{otaUpdateId}
+      operations:
+      - name: getotaupdate
+        method: GET
+        description: Get OTA Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: otaUpdateId
+          in: path
+          type: string
+          description: The OTA update ID.
+          required: true
+      - name: deleteotaupdate
+        method: DELETE
+        description: Delete OTA Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: otaUpdateId
+          in: path
+          type: string
+          description: The OTA update ID to delete.
+          required: true
+        - name: deleteStream
+          in: query
+          type: boolean
+          description: Whether to delete the stream associated with the update.
+        - name: forceDeleteAWSJob
+          in: query
+          type: boolean
+          description: Whether to force delete the associated AWS IoT job.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_FREERTOS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-freertos-ota-updates-rest
+    port: 8080
+    description: REST adapter for Amazon FreeRTOS Management API — OTA Updates. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/otaupdates
+      name: otaupdates
+      description: REST surface for otaUpdates.
+      operations:
+      - method: POST
+        name: createotaupdate
+        description: Create OTA Update
+        call: amazon-freertos-ota-updates.createotaupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listotaupdates
+        description: List OTA Updates
+        call: amazon-freertos-ota-updates.listotaupdates
+        with:
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          otaUpdateStatus: rest.otaUpdateStatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/otaupdates/{otaupdateid}
+      name: otaupdates-otaupdateid
+      description: REST surface for otaUpdates-otaUpdateId.
+      operations:
+      - method: GET
+        name: getotaupdate
+        description: Get OTA Update
+        call: amazon-freertos-ota-updates.getotaupdate
+        with:
+          otaUpdateId: rest.otaUpdateId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteotaupdate
+        description: Delete OTA Update
+        call: amazon-freertos-ota-updates.deleteotaupdate
+        with:
+          otaUpdateId: rest.otaUpdateId
+          deleteStream: rest.deleteStream
+          forceDeleteAWSJob: rest.forceDeleteAWSJob
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-freertos-ota-updates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon FreeRTOS Management API — OTA Updates. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: create-ota-update
+      description: Create OTA Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-freertos-ota-updates.createotaupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-ota-updates
+      description: List OTA Updates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-freertos-ota-updates.listotaupdates
+      with:
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        otaUpdateStatus: tools.otaUpdateStatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ota-update
+      description: Get OTA Update
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-freertos-ota-updates.getotaupdate
+      with:
+        otaUpdateId: tools.otaUpdateId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-ota-update
+      description: Delete OTA Update
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-freertos-ota-updates.deleteotaupdate
+      with:
+        otaUpdateId: tools.otaUpdateId
+        deleteStream: tools.deleteStream
+        forceDeleteAWSJob: tools.forceDeleteAWSJob
+      outputParameters:
+      - type: object
+        mapping: $.
