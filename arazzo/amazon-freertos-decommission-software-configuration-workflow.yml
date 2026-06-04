@@ -1,0 +1,81 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Decommission Software Configuration
+  summary: Confirm a FreeRTOS software configuration exists, delete it, and verify removal.
+  description: >-
+    Retires a FreeRTOS software configuration record. The workflow first
+    describes the configuration to confirm it exists and capture its name and
+    hardware platform for the audit trail, then deletes the record, and
+    finally lists the remaining software configuration records so a caller can
+    verify the target is no longer present. The delete operation returns HTTP
+    204 No Content on success. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-software-configuration
+  summary: Delete a FreeRTOS software configuration after confirming it exists.
+  description: >-
+    Describes the target software configuration to confirm it exists, deletes
+    the record, then lists the remaining configurations to verify the target
+    was removed.
+  inputs:
+    type: object
+    required:
+    - configId
+    properties:
+      configId:
+        type: string
+        description: The ID of the software configuration to delete.
+      maxResults:
+        type: integer
+        description: Maximum number of remaining configurations to list when verifying removal.
+  steps:
+  - stepId: confirmExists
+    description: >-
+      Describe the software configuration to confirm it exists and capture its
+      name and hardware platform before deletion.
+    operationId: describeSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      doomedName: $response.body#/name
+      doomedPlatform: $response.body#/hardwarePlatform
+  - stepId: deleteConfiguration
+    description: >-
+      Delete the software configuration record. A successful deletion returns
+      HTTP 204 No Content.
+    operationId: deleteSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedConfigId: $inputs.configId
+  - stepId: verifyRemoval
+    description: >-
+      List the remaining software configuration records so the caller can
+      verify the deleted configuration is no longer present.
+    operationId: listSoftwareConfigurations
+    parameters:
+    - name: maxResults
+      in: query
+      value: $inputs.maxResults
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      remainingConfigurations: $response.body#/softwareConfigurationList
+  outputs:
+    deletedConfigId: $steps.deleteConfiguration.outputs.deletedConfigId
+    deletedName: $steps.confirmExists.outputs.doomedName
+    remainingConfigurations: $steps.verifyRemoval.outputs.remainingConfigurations

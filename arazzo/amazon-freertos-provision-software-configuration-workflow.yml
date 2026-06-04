@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Provision Software Configuration
+  summary: Survey existing hardware platforms, create a new FreeRTOS software configuration, and confirm it.
+  description: >-
+    Provisions a new FreeRTOS software configuration for a target
+    microcontroller hardware platform. The workflow first lists the existing
+    software configuration records to survey which hardware platforms are
+    already in use, then creates a new configuration for the requested
+    platform, and finally describes the freshly created record to confirm it
+    was stored and is active. The FreeRTOS Management API exposes hardware
+    platforms only as the hardwarePlatform string carried on each software
+    configuration, so the survey step reads platforms off the configuration
+    list rather than a dedicated platforms endpoint. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-software-configuration
+  summary: Create a new FreeRTOS software configuration after surveying existing platforms.
+  description: >-
+    Lists existing software configuration records to discover which hardware
+    platforms are already configured, creates a new configuration for the
+    requested hardware platform, then describes the new record to confirm it
+    persisted.
+  inputs:
+    type: object
+    required:
+    - name
+    - hardwarePlatform
+    properties:
+      name:
+        type: string
+        description: The name for the new FreeRTOS software configuration.
+      description:
+        type: string
+        description: Optional human-readable description of the configuration.
+      hardwarePlatform:
+        type: string
+        description: The target microcontroller hardware platform (e.g. ESP32-D0WD).
+      maxResults:
+        type: integer
+        description: Maximum number of existing configurations to survey.
+  steps:
+  - stepId: surveyPlatforms
+    description: >-
+      List existing software configuration records to survey which hardware
+      platforms are already in use before creating a new one.
+    operationId: listSoftwareConfigurations
+    parameters:
+    - name: maxResults
+      in: query
+      value: $inputs.maxResults
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingConfigurations: $response.body#/softwareConfigurationList
+  - stepId: createConfiguration
+    description: >-
+      Create a new FreeRTOS software configuration for the requested hardware
+      platform.
+    operationId: createSoftwareConfiguration
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        hardwarePlatform: $inputs.hardwarePlatform
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      configId: $response.body#/softwareConfigurationId
+      arn: $response.body#/arn
+      status: $response.body#/status
+  - stepId: confirmConfiguration
+    description: >-
+      Describe the newly created software configuration record to confirm it
+      was stored and read back its current status.
+    operationId: describeSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $steps.createConfiguration.outputs.configId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      confirmedConfigId: $response.body#/softwareConfigurationId
+      confirmedStatus: $response.body#/status
+      confirmedPlatform: $response.body#/hardwarePlatform
+  outputs:
+    configId: $steps.createConfiguration.outputs.configId
+    arn: $steps.createConfiguration.outputs.arn
+    status: $steps.confirmConfiguration.outputs.confirmedStatus
+    hardwarePlatform: $steps.confirmConfiguration.outputs.confirmedPlatform

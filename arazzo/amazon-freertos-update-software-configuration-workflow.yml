@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Update Software Configuration
+  summary: Read a FreeRTOS software configuration, update its metadata, and confirm the change.
+  description: >-
+    Safely edits an existing FreeRTOS software configuration record. The
+    workflow first describes the configuration to confirm it exists and to
+    capture its current name and description, then applies the requested
+    name and description changes with an update call, and finally describes
+    the record again to confirm the update was persisted. Every step spells
+    out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-software-configuration
+  summary: Update the name and description of an existing FreeRTOS software configuration.
+  description: >-
+    Describes the target software configuration to confirm it exists, updates
+    its name and description, then re-describes it to confirm the new values
+    were persisted.
+  inputs:
+    type: object
+    required:
+    - configId
+    properties:
+      configId:
+        type: string
+        description: The ID of the software configuration to update.
+      name:
+        type: string
+        description: The new name for the software configuration.
+      description:
+        type: string
+        description: The new description for the software configuration.
+  steps:
+  - stepId: readBeforeUpdate
+    description: >-
+      Describe the software configuration to confirm it exists and capture its
+      current name and description before editing.
+    operationId: describeSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentName: $response.body#/name
+      currentDescription: $response.body#/description
+      hardwarePlatform: $response.body#/hardwarePlatform
+  - stepId: applyUpdate
+    description: >-
+      Update the software configuration record with the new name and
+      description.
+    operationId: updateSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedConfigId: $response.body#/softwareConfigurationId
+      updatedStatus: $response.body#/status
+  - stepId: confirmUpdate
+    description: >-
+      Describe the software configuration again to confirm the new name and
+      description were persisted.
+    operationId: describeSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      confirmedName: $response.body#/name
+      confirmedDescription: $response.body#/description
+      lastUpdatedDate: $response.body#/lastUpdatedDate
+  outputs:
+    configId: $steps.applyUpdate.outputs.updatedConfigId
+    name: $steps.confirmUpdate.outputs.confirmedName
+    description: $steps.confirmUpdate.outputs.confirmedDescription
+    lastUpdatedDate: $steps.confirmUpdate.outputs.lastUpdatedDate

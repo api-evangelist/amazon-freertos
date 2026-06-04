@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Roll Out OTA Update
+  summary: Create an OTA firmware update, read it back, and branch on its creation status.
+  description: >-
+    Rolls out an over-the-air firmware update to a target group of FreeRTOS
+    devices. The workflow creates the OTA update with the supplied firmware
+    files and device targets, then gets the OTA update record to read its
+    current status, and branches: when creation has completed the workflow
+    ends successfully, and when creation is still pending or in progress it
+    surfaces that the rollout is not yet finished. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rollout-ota-update
+  summary: Create an OTA update and confirm its creation status by reading it back.
+  description: >-
+    Creates an OTA update for the supplied targets and firmware files, gets the
+    update record to read its status, and branches on whether creation has
+    completed or is still in progress.
+  inputs:
+    type: object
+    required:
+    - otaUpdateId
+    - targets
+    - files
+    properties:
+      otaUpdateId:
+        type: string
+        description: The identifier to assign to the new OTA update.
+      description:
+        type: string
+        description: Optional human-readable description of the OTA update.
+      targets:
+        type: array
+        description: The list of device or thing ARNs to target with the update.
+        items:
+          type: string
+      protocols:
+        type: array
+        description: The data transfer protocols to allow (e.g. MQTT, HTTP).
+        items:
+          type: string
+      targetSelection:
+        type: string
+        description: Whether the update is CONTINUOUS or SNAPSHOT.
+      files:
+        type: array
+        description: The list of firmware file descriptors to deploy.
+        items:
+          type: object
+      roleArn:
+        type: string
+        description: The ARN of the IAM role granting access to deploy the update.
+  steps:
+  - stepId: createUpdate
+    description: >-
+      Create the OTA update with the supplied targets and firmware files.
+    operationId: createOtaUpdate
+    requestBody:
+      contentType: application/json
+      payload:
+        otaUpdateId: $inputs.otaUpdateId
+        description: $inputs.description
+        targets: $inputs.targets
+        protocols: $inputs.protocols
+        targetSelection: $inputs.targetSelection
+        files: $inputs.files
+        roleArn: $inputs.roleArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      otaUpdateId: $response.body#/otaUpdateId
+      otaUpdateArn: $response.body#/otaUpdateArn
+      createStatus: $response.body#/otaUpdateStatus
+  - stepId: readUpdate
+    description: >-
+      Get the OTA update record to read its current creation status, then
+      branch on whether creation has completed.
+    operationId: getOtaUpdate
+    parameters:
+    - name: otaUpdateId
+      in: path
+      value: $steps.createUpdate.outputs.otaUpdateId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentStatus: $response.body#/otaUpdateInfo/otaUpdateStatus
+      awsIotJobId: $response.body#/otaUpdateInfo/awsIotJobId
+    onSuccess:
+    - name: creationComplete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.otaUpdateInfo.otaUpdateStatus == "CREATE_COMPLETE"
+        type: jsonpath
+    - name: creationInProgress
+      type: goto
+      stepId: reportPending
+      criteria:
+      - context: $response.body
+        condition: $.otaUpdateInfo.otaUpdateStatus != "CREATE_COMPLETE"
+        type: jsonpath
+  - stepId: reportPending
+    description: >-
+      Re-read the OTA update record to surface that creation is still pending
+      or in progress rather than complete.
+    operationId: getOtaUpdate
+    parameters:
+    - name: otaUpdateId
+      in: path
+      value: $steps.createUpdate.outputs.otaUpdateId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pendingStatus: $response.body#/otaUpdateInfo/otaUpdateStatus
+  outputs:
+    otaUpdateId: $steps.createUpdate.outputs.otaUpdateId
+    otaUpdateArn: $steps.createUpdate.outputs.otaUpdateArn
+    status: $steps.readUpdate.outputs.currentStatus

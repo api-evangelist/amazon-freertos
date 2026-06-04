@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Decommission OTA Update
+  summary: Confirm an OTA update exists, delete it with its stream and job, and verify removal.
+  description: >-
+    Retires an over-the-air firmware update. The workflow first gets the OTA
+    update record to confirm it exists and capture its ARN and any associated
+    AWS IoT job, then deletes the update along with its stream and job, and
+    finally lists the remaining OTA updates so the caller can verify the target
+    is no longer present. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-ota-update
+  summary: Delete an OTA update after confirming it exists, then verify removal.
+  description: >-
+    Gets the OTA update to confirm it exists, deletes it together with its
+    stream and AWS IoT job, then lists the remaining OTA updates to verify the
+    target was removed.
+  inputs:
+    type: object
+    required:
+    - otaUpdateId
+    properties:
+      otaUpdateId:
+        type: string
+        description: The ID of the OTA update to delete.
+      deleteStream:
+        type: boolean
+        description: Whether to delete the stream associated with the update.
+      forceDeleteAWSJob:
+        type: boolean
+        description: Whether to force delete the associated AWS IoT job.
+      maxResults:
+        type: integer
+        description: Maximum number of remaining OTA updates to list when verifying removal.
+  steps:
+  - stepId: confirmExists
+    description: >-
+      Get the OTA update record to confirm it exists and capture its ARN and
+      associated AWS IoT job before deletion.
+    operationId: getOtaUpdate
+    parameters:
+    - name: otaUpdateId
+      in: path
+      value: $inputs.otaUpdateId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      doomedArn: $response.body#/otaUpdateInfo/otaUpdateArn
+      awsIotJobId: $response.body#/otaUpdateInfo/awsIotJobId
+  - stepId: deleteUpdate
+    description: >-
+      Delete the OTA update, optionally removing the associated stream and
+      forcing deletion of the associated AWS IoT job.
+    operationId: deleteOtaUpdate
+    parameters:
+    - name: otaUpdateId
+      in: path
+      value: $inputs.otaUpdateId
+    - name: deleteStream
+      in: query
+      value: $inputs.deleteStream
+    - name: forceDeleteAWSJob
+      in: query
+      value: $inputs.forceDeleteAWSJob
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deletedOtaUpdateId: $inputs.otaUpdateId
+  - stepId: verifyRemoval
+    description: >-
+      List the remaining OTA updates so the caller can verify the deleted
+      update is no longer present.
+    operationId: listOtaUpdates
+    parameters:
+    - name: maxResults
+      in: query
+      value: $inputs.maxResults
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      remainingOtaUpdates: $response.body#/otaUpdates
+  outputs:
+    deletedOtaUpdateId: $steps.deleteUpdate.outputs.deletedOtaUpdateId
+    deletedArn: $steps.confirmExists.outputs.doomedArn
+    remainingOtaUpdates: $steps.verifyRemoval.outputs.remainingOtaUpdates

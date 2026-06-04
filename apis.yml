@@ -76,6 +76,27 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-freertos-tags.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-freertos-decommission-ota-update-workflow.yml
+    name: Amazon FreeRTOS Decommission OTA Update
+    summary: Confirm an OTA update exists, delete it with its stream and job, and verify removal.
+  - url: arazzo/amazon-freertos-decommission-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Decommission Software Configuration
+    summary: Confirm a FreeRTOS software configuration exists, delete it, and verify removal.
+  - url: arazzo/amazon-freertos-provision-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Provision Software Configuration
+    summary: Survey existing hardware platforms, create a new FreeRTOS software configuration, and confirm it.
+  - url: arazzo/amazon-freertos-rollout-ota-update-workflow.yml
+    name: Amazon FreeRTOS Roll Out OTA Update
+    summary: Create an OTA firmware update, read it back, and branch on its creation status.
+  - url: arazzo/amazon-freertos-tag-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Tag Software Configuration
+    summary: Resolve a software configuration ARN, apply resource tags, and read them back.
+  - url: arazzo/amazon-freertos-update-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Update Software Configuration
+    summary: Read a FreeRTOS software configuration, update its metadata, and confirm the change.
 - type: Portal
   url: https://aws.amazon.com/freertos/
 - type: Website

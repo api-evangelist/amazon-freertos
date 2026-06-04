@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Amazon FreeRTOS Tag Software Configuration
+  summary: Resolve a software configuration ARN, apply resource tags, and read them back.
+  description: >-
+    Applies metadata tags to a FreeRTOS software configuration. The workflow
+    first describes the configuration to resolve its ARN, then attaches the
+    supplied tag key/value pairs to that resource, and finally lists the tags
+    on the resource to confirm they were stored. Tagging operates on the
+    resource ARN rather than the configuration ID, which is why the ARN must be
+    resolved from the configuration record first. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: freertosApi
+  url: ../openapi/amazon-freertos-openapi.yml
+  type: openapi
+workflows:
+- workflowId: tag-software-configuration
+  summary: Tag a FreeRTOS software configuration by resolving its ARN first.
+  description: >-
+    Describes the software configuration to resolve its ARN, applies the
+    supplied tags to that resource, then lists the resource tags to confirm
+    they were stored.
+  inputs:
+    type: object
+    required:
+    - configId
+    - tags
+    properties:
+      configId:
+        type: string
+        description: The ID of the software configuration to tag.
+      tags:
+        type: object
+        description: A map of tag key/value pairs to apply to the resource.
+        additionalProperties:
+          type: string
+  steps:
+  - stepId: resolveArn
+    description: >-
+      Describe the software configuration to resolve the resource ARN that the
+      tagging operations require.
+    operationId: describeSoftwareConfiguration
+    parameters:
+    - name: configId
+      in: path
+      value: $inputs.configId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      resourceArn: $response.body#/arn
+  - stepId: applyTags
+    description: >-
+      Add to or modify the tags on the software configuration resource using
+      the ARN resolved from the configuration record.
+    operationId: tagResource
+    parameters:
+    - name: resourceArn
+      in: path
+      value: $steps.resolveArn.outputs.resourceArn
+    requestBody:
+      contentType: application/json
+      payload:
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      taggedArn: $steps.resolveArn.outputs.resourceArn
+  - stepId: confirmTags
+    description: >-
+      List the tags on the resource to confirm the supplied tags were stored.
+    operationId: listTagsForResource
+    parameters:
+    - name: resourceArn
+      in: path
+      value: $steps.resolveArn.outputs.resourceArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      storedTags: $response.body#/tags
+  outputs:
+    resourceArn: $steps.applyTags.outputs.taggedArn
+    storedTags: $steps.confirmTags.outputs.storedTags
