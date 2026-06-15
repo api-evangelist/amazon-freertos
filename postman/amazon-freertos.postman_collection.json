@@ -1,0 +1,2641 @@
+{
+  "info": {
+    "_postman_id": "3dc34fd0-36df-4088-8c67-724fc752f902",
+    "name": "Amazon FreeRTOS Management API",
+    "description": "The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.\n\nContact Support:\n Name: AWS Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:04:06.000Z",
+    "updatedAt": "2026-06-05T15:04:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3dc34fd0-36df-4088-8c67-724fc752f902"
+  },
+  "item": [
+    {
+      "name": "software-configuration-records",
+      "item": [
+        {
+          "name": "{configId}",
+          "item": [
+            {
+              "name": "Describe Software Configuration",
+              "id": "42bbb662-56bf-4447-adf6-c74536bd1098",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records",
+                    ":configId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "76c4c1a2-f677-40b1-be00-82e18609375b",
+                      "key": "configId",
+                      "value": "<string>",
+                      "description": "(Required) ID of the software configuration."
+                    }
+                  ]
+                },
+                "description": "Gets a FreeRTOS software configuration record."
+              },
+              "response": [
+                {
+                  "id": "2a143f37-9cc3-45dc-8547-d8c37c944be7",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"softwareConfigurationId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"status\": \"INACTIVE\",\n  \"version\": \"<string>\",\n  \"creationDate\": \"<dateTime>\",\n  \"lastUpdatedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-2a143f37-9cc3-45dc-8547-d8c37c944be7"
+                },
+                {
+                  "id": "c21d23d6-4790-46e2-b364-4f7dd2e5d3fd",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-c21d23d6-4790-46e2-b364-4f7dd2e5d3fd"
+                },
+                {
+                  "id": "9f972eda-ae67-4c68-845a-a130e1ded17b",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-9f972eda-ae67-4c68-845a-a130e1ded17b"
+                },
+                {
+                  "id": "daa73cfa-3767-417b-a7f6-210ee70bf104",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-daa73cfa-3767-417b-a7f6-210ee70bf104"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-42bbb662-56bf-4447-adf6-c74536bd1098"
+            },
+            {
+              "name": "Update Software Configuration",
+              "id": "06508e8c-3d40-430f-8540-c19d3788aeb4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records",
+                    ":configId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "565129cf-625a-4cbf-953f-00100f4d28cf",
+                      "key": "configId",
+                      "value": "<string>",
+                      "description": "(Required) ID of the software configuration to update."
+                    }
+                  ]
+                },
+                "description": "Updates a FreeRTOS software configuration record."
+              },
+              "response": [
+                {
+                  "id": "a78ccdc7-081d-400d-a188-615f833ed52d",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"softwareConfigurationId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"status\": \"INACTIVE\",\n  \"version\": \"<string>\",\n  \"creationDate\": \"<dateTime>\",\n  \"lastUpdatedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-a78ccdc7-081d-400d-a188-615f833ed52d"
+                },
+                {
+                  "id": "d35003c5-0e2e-4195-a461-fb9648fde1b8",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-d35003c5-0e2e-4195-a461-fb9648fde1b8"
+                },
+                {
+                  "id": "6dc0254a-241c-47a7-aee7-5399026c2d56",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-6dc0254a-241c-47a7-aee7-5399026c2d56"
+                },
+                {
+                  "id": "dea8e8ff-283c-4975-a544-b11b3533a8cb",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-dea8e8ff-283c-4975-a544-b11b3533a8cb"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-06508e8c-3d40-430f-8540-c19d3788aeb4"
+            },
+            {
+              "name": "Delete Software Configuration",
+              "id": "b02d0617-c4fe-466e-9856-92fed8e33b9d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records",
+                    ":configId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "40465761-ddd3-4186-9c9d-d072d8a53a58",
+                      "key": "configId",
+                      "value": "<string>",
+                      "description": "(Required) ID of the software configuration to delete."
+                    }
+                  ]
+                },
+                "description": "Deletes a FreeRTOS software configuration record."
+              },
+              "response": [
+                {
+                  "id": "5c8d55fd-253d-41fc-aac0-15098db1d548",
+                  "name": "Deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-5c8d55fd-253d-41fc-aac0-15098db1d548"
+                },
+                {
+                  "id": "c9a67467-6a17-44a5-9dd9-5a8b105dff2a",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-c9a67467-6a17-44a5-9dd9-5a8b105dff2a"
+                },
+                {
+                  "id": "6cadd6e8-96ed-418c-ae76-c3f33dff800b",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-6cadd6e8-96ed-418c-ae76-c3f33dff800b"
+                },
+                {
+                  "id": "5ddc4022-ad3e-4b5a-819b-fa99272ddef2",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/software-configuration-records/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "software-configuration-records",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-5ddc4022-ad3e-4b5a-819b-fa99272ddef2"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-b02d0617-c4fe-466e-9856-92fed8e33b9d"
+            }
+          ],
+          "id": "fb2eaaa9-b450-413e-9227-0bca28b2a884",
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-fb2eaaa9-b450-413e-9227-0bca28b2a884"
+        },
+        {
+          "name": "Create Software Configuration",
+          "id": "1c955f58-c499-45b3-8e11-5933f12015a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"laboris_\": \"<string>\",\n    \"enim_31c\": \"<string>\",\n    \"amet_47\": \"<string>\",\n    \"ad_8b\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/software-configuration-records",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "software-configuration-records"
+              ]
+            },
+            "description": "Creates a FreeRTOS software configuration record specifying the libraries and settings for a target hardware platform."
+          },
+          "response": [
+            {
+              "id": "0aacb69e-aa60-4cce-8961-48d302deea26",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"laboris_\": \"<string>\",\n    \"enim_31c\": \"<string>\",\n    \"amet_47\": \"<string>\",\n    \"ad_8b\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"softwareConfigurationId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"arn\": \"<string>\",\n  \"status\": \"INACTIVE\",\n  \"version\": \"<string>\",\n  \"creationDate\": \"<dateTime>\",\n  \"lastUpdatedDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-0aacb69e-aa60-4cce-8961-48d302deea26"
+            },
+            {
+              "id": "8dc3cc88-858b-48af-a378-fccede8ee37a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"laboris_\": \"<string>\",\n    \"enim_31c\": \"<string>\",\n    \"amet_47\": \"<string>\",\n    \"ad_8b\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-8dc3cc88-858b-48af-a378-fccede8ee37a"
+            },
+            {
+              "id": "395c9ec0-ed3f-41e9-8cc9-916d1f77811b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"hardwarePlatform\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": {\n    \"laboris_\": \"<string>\",\n    \"enim_31c\": \"<string>\",\n    \"amet_47\": \"<string>\",\n    \"ad_8b\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-395c9ec0-ed3f-41e9-8cc9-916d1f77811b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-1c955f58-c499-45b3-8e11-5933f12015a8"
+        },
+        {
+          "name": "List Software Configurations",
+          "id": "60fc430b-4968-4834-b330-196fc2b3b5d0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/software-configuration-records?maxResults=<integer>&nextToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "software-configuration-records"
+              ],
+              "query": [
+                {
+                  "description": "Maximum results to return.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination token.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Lists FreeRTOS software configuration records."
+          },
+          "response": [
+            {
+              "id": "7a9dd1f1-7417-4f6d-a1f3-ca93c8aff867",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records?maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"softwareConfigurationList\": [\n    {\n      \"softwareConfigurationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"hardwarePlatform\": \"<string>\",\n      \"status\": \"<string>\",\n      \"version\": \"<string>\",\n      \"creationDate\": \"<dateTime>\"\n    },\n    {\n      \"softwareConfigurationId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"hardwarePlatform\": \"<string>\",\n      \"status\": \"<string>\",\n      \"version\": \"<string>\",\n      \"creationDate\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-7a9dd1f1-7417-4f6d-a1f3-ca93c8aff867"
+            },
+            {
+              "id": "fe3f6749-b564-4a2a-97a8-42789ed1c8b5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records?maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-fe3f6749-b564-4a2a-97a8-42789ed1c8b5"
+            },
+            {
+              "id": "b3d7b213-f85a-4726-a908-55e39b4c7c85",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/software-configuration-records?maxResults=<integer>&nextToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "software-configuration-records"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-b3d7b213-f85a-4726-a908-55e39b4c7c85"
+            }
+          ],
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-60fc430b-4968-4834-b330-196fc2b3b5d0"
+        }
+      ],
+      "id": "5a0e3618-48fe-4147-ba2a-2d84237d1a2d",
+      "createdAt": "2026-06-05T15:04:07.000Z",
+      "updatedAt": "2026-06-05T15:04:07.000Z",
+      "uid": "35240-5a0e3618-48fe-4147-ba2a-2d84237d1a2d"
+    },
+    {
+      "name": "otaUpdates",
+      "item": [
+        {
+          "name": "{otaUpdateId}",
+          "item": [
+            {
+              "name": "Get OTA Update",
+              "id": "89d1751e-5b4a-46d3-acfd-46f283092991",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates",
+                    ":otaUpdateId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ba92bedf-01a0-42ad-bc48-f595cac64f26",
+                      "key": "otaUpdateId",
+                      "value": "<string>",
+                      "description": "(Required) The OTA update ID."
+                    }
+                  ]
+                },
+                "description": "Gets an OTA update."
+              },
+              "response": [
+                {
+                  "id": "a944fbb2-5e35-4cc9-811c-7a8ae44fe8d9",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"otaUpdateInfo\": {\n    \"otaUpdateId\": \"<string>\",\n    \"targets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"otaUpdateArn\": \"<string>\",\n    \"otaUpdateStatus\": \"CREATE_COMPLETE\",\n    \"description\": \"<string>\",\n    \"protocols\": [\n      \"MQTT\",\n      \"MQTT\"\n    ],\n    \"creationDate\": \"<dateTime>\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"awsIotJobId\": \"<string>\",\n    \"awsIotJobArn\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-a944fbb2-5e35-4cc9-811c-7a8ae44fe8d9"
+                },
+                {
+                  "id": "060ff34a-88e7-403d-a832-464232c514fe",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-060ff34a-88e7-403d-a832-464232c514fe"
+                },
+                {
+                  "id": "95012a69-727e-408e-93be-8c317054d8fb",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-95012a69-727e-408e-93be-8c317054d8fb"
+                },
+                {
+                  "id": "2a0d6ef8-102c-41fe-9fc0-ca7a8e49850c",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-2a0d6ef8-102c-41fe-9fc0-ca7a8e49850c"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-89d1751e-5b4a-46d3-acfd-46f283092991"
+            },
+            {
+              "name": "Delete OTA Update",
+              "id": "fd3c8a33-9c3e-4b4e-ad1a-9e2e892fd6eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId?deleteStream=<boolean>&forceDeleteAWSJob=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates",
+                    ":otaUpdateId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Whether to delete the stream associated with the update.",
+                      "key": "deleteStream",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Whether to force delete the associated AWS IoT job.",
+                      "key": "forceDeleteAWSJob",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "66aa7254-e33a-49f3-85e9-f98dffd71071",
+                      "key": "otaUpdateId",
+                      "value": "<string>",
+                      "description": "(Required) The OTA update ID to delete."
+                    }
+                  ]
+                },
+                "description": "Deletes an OTA update."
+              },
+              "response": [
+                {
+                  "id": "faf4f323-16c4-4d85-9354-8e51a8b76063",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId?deleteStream=<boolean>&forceDeleteAWSJob=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to delete the stream associated with the update.",
+                          "key": "deleteStream",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to force delete the associated AWS IoT job.",
+                          "key": "forceDeleteAWSJob",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-faf4f323-16c4-4d85-9354-8e51a8b76063"
+                },
+                {
+                  "id": "a04b84fd-ec55-467e-82ab-0ef1622383d3",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId?deleteStream=<boolean>&forceDeleteAWSJob=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to delete the stream associated with the update.",
+                          "key": "deleteStream",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to force delete the associated AWS IoT job.",
+                          "key": "forceDeleteAWSJob",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-a04b84fd-ec55-467e-82ab-0ef1622383d3"
+                },
+                {
+                  "id": "7f31dac2-a048-4efd-a9d5-483600e6e746",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId?deleteStream=<boolean>&forceDeleteAWSJob=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to delete the stream associated with the update.",
+                          "key": "deleteStream",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to force delete the associated AWS IoT job.",
+                          "key": "forceDeleteAWSJob",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-7f31dac2-a048-4efd-a9d5-483600e6e746"
+                },
+                {
+                  "id": "86c924f6-8712-4276-a90e-2b81a13ba1a9",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/otaUpdates/:otaUpdateId?deleteStream=<boolean>&forceDeleteAWSJob=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "otaUpdates",
+                        ":otaUpdateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Whether to delete the stream associated with the update.",
+                          "key": "deleteStream",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Whether to force delete the associated AWS IoT job.",
+                          "key": "forceDeleteAWSJob",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "otaUpdateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-86c924f6-8712-4276-a90e-2b81a13ba1a9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-fd3c8a33-9c3e-4b4e-ad1a-9e2e892fd6eb"
+            }
+          ],
+          "id": "902f40c2-92bc-4e55-942d-503f169397a3",
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-902f40c2-92bc-4e55-942d-503f169397a3"
+        },
+        {
+          "name": "Create OTA Update",
+          "id": "0f379ebb-4f28-46ef-a729-5e469b76e434",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"otaUpdateId\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"files\": [],\n  \"description\": \"<string>\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetSelection\": \"CONTINUOUS\",\n  \"roleArn\": \"<string>\",\n  \"tags\": {\n    \"elitfd3\": \"<string>\",\n    \"quis_22\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/otaUpdates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "otaUpdates"
+              ]
+            },
+            "description": "Creates an AWS IoT OTA update on a target group of devices."
+          },
+          "response": [
+            {
+              "id": "ec5134ef-0f3e-44a6-b0fd-269276c03fa8",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"otaUpdateId\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"files\": [],\n  \"description\": \"<string>\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetSelection\": \"CONTINUOUS\",\n  \"roleArn\": \"<string>\",\n  \"tags\": {\n    \"elitfd3\": \"<string>\",\n    \"quis_22\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"otaUpdateId\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"otaUpdateArn\": \"<string>\",\n  \"otaUpdateStatus\": \"CREATE_PENDING\",\n  \"description\": \"<string>\",\n  \"protocols\": [\n    \"HTTP\",\n    \"MQTT\"\n  ],\n  \"creationDate\": \"<dateTime>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"awsIotJobId\": \"<string>\",\n  \"awsIotJobArn\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-ec5134ef-0f3e-44a6-b0fd-269276c03fa8"
+            },
+            {
+              "id": "ac36b0ac-2a03-484e-b5fb-672b68b2f306",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"otaUpdateId\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"files\": [],\n  \"description\": \"<string>\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetSelection\": \"CONTINUOUS\",\n  \"roleArn\": \"<string>\",\n  \"tags\": {\n    \"elitfd3\": \"<string>\",\n    \"quis_22\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-ac36b0ac-2a03-484e-b5fb-672b68b2f306"
+            },
+            {
+              "id": "d9eaecee-d471-4e65-92ae-1e7b250a2039",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"otaUpdateId\": \"<string>\",\n  \"targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"files\": [],\n  \"description\": \"<string>\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetSelection\": \"CONTINUOUS\",\n  \"roleArn\": \"<string>\",\n  \"tags\": {\n    \"elitfd3\": \"<string>\",\n    \"quis_22\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-d9eaecee-d471-4e65-92ae-1e7b250a2039"
+            }
+          ],
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-0f379ebb-4f28-46ef-a729-5e469b76e434"
+        },
+        {
+          "name": "List OTA Updates",
+          "id": "f2dfe0fb-f50e-43dc-8867-96013d682696",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/otaUpdates?maxResults=<integer>&nextToken=<string>&otaUpdateStatus=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "otaUpdates"
+              ],
+              "query": [
+                {
+                  "description": "Maximum results.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination token.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by OTA update status.",
+                  "key": "otaUpdateStatus",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Lists OTA updates."
+          },
+          "response": [
+            {
+              "id": "2b371184-112f-4c57-a0d8-8c7e5d0d53a9",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates?maxResults=<integer>&nextToken=<string>&otaUpdateStatus=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by OTA update status.",
+                      "key": "otaUpdateStatus",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"otaUpdates\": [\n    {\n      \"otaUpdateId\": \"<string>\",\n      \"otaUpdateArn\": \"<string>\",\n      \"creationDate\": \"<dateTime>\"\n    },\n    {\n      \"otaUpdateId\": \"<string>\",\n      \"otaUpdateArn\": \"<string>\",\n      \"creationDate\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-2b371184-112f-4c57-a0d8-8c7e5d0d53a9"
+            },
+            {
+              "id": "060a95e2-be75-4736-be4c-2fad93f267e6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates?maxResults=<integer>&nextToken=<string>&otaUpdateStatus=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by OTA update status.",
+                      "key": "otaUpdateStatus",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-060a95e2-be75-4736-be4c-2fad93f267e6"
+            },
+            {
+              "id": "071091d9-bb2c-4355-ba36-708581b3cdcc",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/otaUpdates?maxResults=<integer>&nextToken=<string>&otaUpdateStatus=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "otaUpdates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum results.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination token.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by OTA update status.",
+                      "key": "otaUpdateStatus",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-071091d9-bb2c-4355-ba36-708581b3cdcc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-f2dfe0fb-f50e-43dc-8867-96013d682696"
+        }
+      ],
+      "id": "9133e955-665d-4707-8967-7d2a13b1f354",
+      "createdAt": "2026-06-05T15:04:07.000Z",
+      "updatedAt": "2026-06-05T15:04:07.000Z",
+      "uid": "35240-9133e955-665d-4707-8967-7d2a13b1f354"
+    },
+    {
+      "name": "tags",
+      "item": [
+        {
+          "name": "{resourceArn}",
+          "item": [
+            {
+              "name": "List Tags For Resource",
+              "id": "78d64aaf-56a7-41fe-b18c-26fc1f514394",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tags/:resourceArn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "variable": [
+                    {
+                      "id": "728a7eb0-a783-4363-9743-966f6cb49004",
+                      "key": "resourceArn",
+                      "value": "<string>",
+                      "description": "(Required) The ARN of the resource."
+                    }
+                  ]
+                },
+                "description": "Lists the tags (metadata) you have assigned to the resource."
+              },
+              "response": [
+                {
+                  "id": "766ecdc5-5c02-4ce8-b661-18f4c6980ace",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"tags\": {\n    \"nulla7\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-766ecdc5-5c02-4ce8-b661-18f4c6980ace"
+                },
+                {
+                  "id": "35d9a200-1d1f-45d2-9a00-24ee18eb8e36",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-35d9a200-1d1f-45d2-9a00-24ee18eb8e36"
+                },
+                {
+                  "id": "8d32bca1-3fe4-46df-bc3e-32f2a8437730",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-8d32bca1-3fe4-46df-bc3e-32f2a8437730"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-78d64aaf-56a7-41fe-b18c-26fc1f514394"
+            },
+            {
+              "name": "Tag Resource",
+              "id": "de84046f-1929-435f-aea5-cd78fdf61f8d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"proidenta\": \"<string>\",\n    \"nulla4c\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tags/:resourceArn",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7880a2c2-dbe8-42c7-ab53-fe8065619a4a",
+                      "key": "resourceArn",
+                      "value": "<string>",
+                      "description": "(Required) The ARN of the resource."
+                    }
+                  ]
+                },
+                "description": "Adds to or modifies the tags of the given resource."
+              },
+              "response": [
+                {
+                  "id": "ee8f9254-7c25-4343-99dd-6c85059c3276",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tags\": {\n    \"proidenta\": \"<string>\",\n    \"nulla4c\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-ee8f9254-7c25-4343-99dd-6c85059c3276"
+                },
+                {
+                  "id": "32ed9eff-eb7e-4feb-a069-82105f2466eb",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tags\": {\n    \"proidenta\": \"<string>\",\n    \"nulla4c\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-32ed9eff-eb7e-4feb-a069-82105f2466eb"
+                },
+                {
+                  "id": "7013c2b6-72e5-49b7-9718-fc05ce06896d",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tags\": {\n    \"proidenta\": \"<string>\",\n    \"nulla4c\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:resourceArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":resourceArn"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceArn"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:04:07.000Z",
+                  "updatedAt": "2026-06-05T15:04:07.000Z",
+                  "uid": "35240-7013c2b6-72e5-49b7-9718-fc05ce06896d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:04:07.000Z",
+              "updatedAt": "2026-06-05T15:04:07.000Z",
+              "uid": "35240-de84046f-1929-435f-aea5-cd78fdf61f8d"
+            }
+          ],
+          "id": "8ae6ff5c-4493-40db-8b6b-8d3885922329",
+          "createdAt": "2026-06-05T15:04:07.000Z",
+          "updatedAt": "2026-06-05T15:04:07.000Z",
+          "uid": "35240-8ae6ff5c-4493-40db-8b6b-8d3885922329"
+        }
+      ],
+      "id": "3760d2d8-ebda-4943-97ae-321cbc6c5c7f",
+      "createdAt": "2026-06-05T15:04:07.000Z",
+      "updatedAt": "2026-06-05T15:04:07.000Z",
+      "uid": "35240-3760d2d8-ebda-4943-97ae-321cbc6c5c7f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FreeRTOS Management API",
+    "version": "2021-11-29"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Software Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Software Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/software-configuration-records",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results to return."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token."
+              }
+            ]
+          },
+          "docs": "Lists FreeRTOS software configuration records."
+        },
+        {
+          "info": {
+            "name": "Create Software Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iot.{region}.amazonaws.com/software-configuration-records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a FreeRTOS software configuration record specifying the libraries and settings for a target hardware platform."
+        },
+        {
+          "info": {
+            "name": "Describe Software Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/software-configuration-records/:configId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the software configuration."
+              }
+            ]
+          },
+          "docs": "Gets a FreeRTOS software configuration record."
+        },
+        {
+          "info": {
+            "name": "Update Software Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://iot.{region}.amazonaws.com/software-configuration-records/:configId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the software configuration to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a FreeRTOS software configuration record."
+        },
+        {
+          "info": {
+            "name": "Delete Software Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iot.{region}.amazonaws.com/software-configuration-records/:configId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the software configuration to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a FreeRTOS software configuration record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OTA Updates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List OTA Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token."
+              },
+              {
+                "name": "otaUpdateStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by OTA update status."
+              }
+            ]
+          },
+          "docs": "Lists OTA updates."
+        },
+        {
+          "info": {
+            "name": "Create OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an AWS IoT OTA update on a target group of devices."
+        },
+        {
+          "info": {
+            "name": "Get OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates/:otaUpdateId",
+            "params": [
+              {
+                "name": "otaUpdateId",
+                "value": "",
+                "type": "path",
+                "description": "The OTA update ID."
+              }
+            ]
+          },
+          "docs": "Gets an OTA update."
+        },
+        {
+          "info": {
+            "name": "Delete OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates/:otaUpdateId",
+            "params": [
+              {
+                "name": "otaUpdateId",
+                "value": "",
+                "type": "path",
+                "description": "The OTA update ID to delete."
+              },
+              {
+                "name": "deleteStream",
+                "value": "",
+                "type": "query",
+                "description": "Whether to delete the stream associated with the update."
+              },
+              {
+                "name": "forceDeleteAWSJob",
+                "value": "",
+                "type": "query",
+                "description": "Whether to force delete the associated AWS IoT job."
+              }
+            ]
+          },
+          "docs": "Deletes an OTA update."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tags For Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the resource."
+              }
+            ]
+          },
+          "docs": "Lists the tags (metadata) you have assigned to the resource."
+        },
+        {
+          "info": {
+            "name": "Tag Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iot.{region}.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds to or modifies the tags of the given resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
