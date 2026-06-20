@@ -5,7 +5,7 @@ description: >-
   deploy, secure, connect, and manage small, low-power edge devices. It extends the FreeRTOS kernel with libraries for
   secure connectivity, over-the-air updates, and more.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AWS
   - Embedded Systems
