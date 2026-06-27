@@ -53,15 +53,15 @@ apis:
         url: json-structure/amazon-freertos-ota-file-structure.json
       - type: JSONStructure
         url: json-structure/amazon-freertos-tag-structure.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-freertos-software-configuration-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-freertos-ota-update-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-freertos-device-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-freertos-ota-file-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-freertos-tag-example.json
       - type: GettingStarted
         url: https://aws.amazon.com/freertos/getting-started/
@@ -74,27 +74,24 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-freertos/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/amazon-freertos-decommission-ota-update-workflow.yml
-        name: Amazon FreeRTOS Decommission OTA Update
-        summary: Confirm an OTA update exists, delete it with its stream and job, and verify removal.
-      - url: arazzo/amazon-freertos-decommission-software-configuration-workflow.yml
-        name: Amazon FreeRTOS Decommission Software Configuration
-        summary: Confirm a FreeRTOS software configuration exists, delete it, and verify removal.
-      - url: arazzo/amazon-freertos-provision-software-configuration-workflow.yml
-        name: Amazon FreeRTOS Provision Software Configuration
-        summary: Survey existing hardware platforms, create a new FreeRTOS software configuration, and confirm it.
-      - url: arazzo/amazon-freertos-rollout-ota-update-workflow.yml
-        name: Amazon FreeRTOS Roll Out OTA Update
-        summary: Create an OTA firmware update, read it back, and branch on its creation status.
-      - url: arazzo/amazon-freertos-tag-software-configuration-workflow.yml
-        name: Amazon FreeRTOS Tag Software Configuration
-        summary: Resolve a software configuration ARN, apply resource tags, and read them back.
-      - url: arazzo/amazon-freertos-update-software-configuration-workflow.yml
-        name: Amazon FreeRTOS Update Software Configuration
-        summary: Read a FreeRTOS software configuration, update its metadata, and confirm the change.
+  - type: Arazzo
+    url: arazzo/amazon-freertos-decommission-ota-update-workflow.yml
+    name: Amazon FreeRTOS Decommission OTA Update
+  - type: Arazzo
+    url: arazzo/amazon-freertos-decommission-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Decommission Software Configuration
+  - type: Arazzo
+    url: arazzo/amazon-freertos-provision-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Provision Software Configuration
+  - type: Arazzo
+    url: arazzo/amazon-freertos-rollout-ota-update-workflow.yml
+    name: Amazon FreeRTOS Roll Out OTA Update
+  - type: Arazzo
+    url: arazzo/amazon-freertos-tag-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Tag Software Configuration
+  - type: Arazzo
+    url: arazzo/amazon-freertos-update-software-configuration-workflow.yml
+    name: Amazon FreeRTOS Update Software Configuration
   - type: Portal
     url: https://aws.amazon.com/freertos/
   - type: Website
@@ -115,7 +112,7 @@ common:
     url: https://github.com/aws/amazon-freertos
   - type: Console
     url: https://console.aws.amazon.com/iot/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: StatusPage
     url: https://health.aws.amazon.com/health/status
