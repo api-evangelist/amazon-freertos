@@ -72,6 +72,14 @@ apis:
       - type: APIReference
         url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
 common:
+  - type: TrustCenter
+    url: security/amazon-freertos-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-freertos-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-freertos-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-freertos-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-freertos/overview
   - type: Arazzo
