@@ -1,132 +1,152 @@
-# Amazon FreeRTOS Spectral Rules
-extends: spectral:oas
+# amazon-freertos — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on amazonaws.com
+#   - path-params-casing: camel @ 100% (n=7)
+#   - query-params-casing: camel @ 100% (n=7)
+#   - operationid-casing: camel @ 100% (n=11)
+#   - schema-names-casing: pascal @ 100% (n=9)
+#   - schema-properties-casing: snake @ 51% (n=45)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: ErrorResponse
+#   - operation-documents-400: 100% adherence
+#   - operation-documents-500: 100% adherence
+#   - pagination params observed: ['maxResults', 'nextToken']
+#   - merge: kept 25 existing, added 10 measured, upgraded 0
+#   - added: servers-expected-domain, path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing, security-schemes-defined, error-schema-defined, operation-documents-400, operation-documents-500, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   freertos-info-contact:
     description: API must include contact information
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: contact
       function: truthy
   freertos-info-description:
     description: API must have a description
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
   freertos-server-https:
     description: Server URLs must use HTTPS
     severity: error
-    given: "$.servers[*].url"
+    given: $.servers[*].url
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
+        match: ^https://
   freertos-operation-summary:
     description: Operations must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
   freertos-operation-description:
     description: Operations should have a description
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: description
       function: truthy
   freertos-operation-tags:
     description: Operations must have at least one tag
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
   freertos-operation-id:
     description: Operations must have operationId
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
   freertos-operation-id-camel-case:
     description: operationId should use camelCase
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    given: $.paths[*][get,post,put,patch,delete].operationId
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]*$"
+        match: ^[a-z][a-zA-Z0-9]*$
   freertos-response-200:
     description: POST operations should define 200 response
     severity: warn
-    given: "$.paths[*][post]"
+    given: $.paths[*][post]
     then:
       field: responses.200
       function: truthy
   freertos-response-400:
     description: Operations should define 400 response
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses.400
       function: truthy
   freertos-response-500:
     description: Operations should define 500 response
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses.500
       function: truthy
   freertos-response-404:
     description: Resource-by-ID operations should define 404
     severity: warn
-    given: "$.paths[*~'\\{[^}]+\\}'][get,put,patch,delete].responses"
+    given: $.paths[*~'\{[^}]+\}'][get,put,patch,delete].responses
     then:
-      field: "404"
+      field: '404'
       function: truthy
   freertos-delete-204:
     description: DELETE operations should return 204
     severity: info
-    given: "$.paths[*].delete"
+    given: $.paths[*].delete
     then:
       field: responses.204
       function: truthy
   freertos-parameter-description:
     description: Parameters must have descriptions
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
     then:
       field: description
       function: truthy
   freertos-path-param-required:
     description: Path parameters must be required
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete].parameters[?(@.in=='path')]"
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='path')]
     then:
       field: required
       function: truthy
   freertos-schema-description:
     description: Schema components should have descriptions
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
   freertos-tags-title-case:
     description: Operation tags should use Title Case
     severity: warn
-    given: "$.paths[*][*].tags[*]"
+    given: $.paths[*][*].tags[*]
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9 ]*$"
+        match: ^[A-Z][a-zA-Z0-9 ]*$
   freertos-ota-targets-required:
     description: OTA update schema must require targets
     severity: warn
-    given: "$.components.schemas.OtaUpdate.required"
+    given: $.components.schemas.OtaUpdate.required
     then:
       function: schema
       functionOptions:
@@ -137,14 +157,14 @@ rules:
   freertos-ota-status-enum:
     description: OTA update status should define enum values
     severity: warn
-    given: "$.components.schemas.OtaUpdate.properties.otaUpdateStatus"
+    given: $.components.schemas.OtaUpdate.properties.otaUpdateStatus
     then:
       field: enum
       function: truthy
   freertos-sw-config-hardware-platform:
     description: Software configuration must document hardware platform
     severity: warn
-    given: "$.components.schemas.SoftwareConfiguration.required"
+    given: $.components.schemas.SoftwareConfiguration.required
     then:
       function: schema
       functionOptions:
@@ -155,40 +175,118 @@ rules:
   freertos-create-prefix:
     description: POST creation operationIds should start with 'create'
     severity: warn
-    given: "$.paths[*].post.operationId"
+    given: $.paths[*].post.operationId
     then:
       function: pattern
       functionOptions:
-        match: "^(create|list|tag|get|describe)"
+        match: ^(create|list|tag|get|describe)
   freertos-list-prefix:
     description: Collection GET operationIds should start with 'list'
     severity: warn
-    given: "$.paths[*~'[^}]$'].get.operationId"
+    given: $.paths[*~'[^}]$'].get.operationId
     then:
       function: pattern
       functionOptions:
-        match: "^list"
+        match: ^list
   freertos-schema-properties:
     description: Object schemas should define properties
     severity: warn
-    given: "$.components.schemas[?(@.type=='object')]"
+    given: $.components.schemas[?(@.type=='object')]
     then:
       field: properties
       function: truthy
   freertos-request-body-json:
     description: POST/PUT request bodies should define application/json
     severity: warn
-    given: "$.paths[*][post,put].requestBody.content"
+    given: $.paths[*][post,put].requestBody.content
     then:
       function: schema
       functionOptions:
         schema:
           type: object
-          required: ["application/json"]
+          required:
+          - application/json
   freertos-ota-protocols-documented:
     description: OTA update create request should document protocols
     severity: info
-    given: "$.components.schemas.CreateOtaUpdateRequest.properties"
+    given: $.components.schemas.CreateOtaUpdateRequest.properties
     then:
       field: protocols
+      function: truthy
+  servers-expected-domain:
+    description: Server URLs should be on the amazonaws.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: amazonaws\.com
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  security-schemes-defined:
+    description: Security schemes should be defined in components.
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+  error-schema-defined:
+    description: A shared error schema (ErrorResponse) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: ErrorResponse
+      function: truthy
+  operation-documents-400:
+    description: Operations should document a 400 response (documented on 100% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '400'
+      function: truthy
+  operation-documents-500:
+    description: Operations should document a 500 response (documented on 100% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '500'
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
       function: truthy
