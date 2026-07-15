@@ -72,6 +72,8 @@ apis:
       - type: APIReference
         url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-freertos-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-freertos-trust-center.yml
   - type: VulnerabilityDisclosure
