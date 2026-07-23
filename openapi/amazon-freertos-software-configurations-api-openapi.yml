@@ -1,0 +1,364 @@
+openapi: 3.1.0
+info:
+  title: Amazon FreeRTOS Management OTA Updates Software Configurations API
+  description: The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.
+  version: '2021-11-29'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://iot.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+security:
+- awsSigV4: []
+tags:
+- name: Software Configurations
+  description: FreeRTOS software configuration management
+paths:
+  /software-configuration-records:
+    post:
+      operationId: createSoftwareConfiguration
+      summary: Create Software Configuration
+      description: Creates a FreeRTOS software configuration record specifying the libraries and settings for a target hardware platform.
+      tags:
+      - Software Configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSoftwareConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    softwareConfigurationId: sc-abc12345
+                    name: my-freertos-config
+                    description: FreeRTOS config for sensor nodes
+                    arn: arn:aws:freertos:us-east-1:123456789012:configuration/my-freertos-config
+                    status: ACTIVE
+                    version: '1'
+                    hardwarePlatform: ESP32-D0WD
+                    creationDate: '2025-01-15T09:00:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listSoftwareConfigurations
+      summary: List Software Configurations
+      description: Lists FreeRTOS software configuration records.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+        description: Maximum results to return.
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  softwareConfigurationList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SoftwareConfigurationSummary'
+                  nextToken:
+                    type: string
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    softwareConfigurationList:
+                    - softwareConfigurationId: sc-abc12345
+                      name: my-freertos-config
+                      description: FreeRTOS config for sensor nodes
+                      arn: arn:aws:freertos:us-east-1:123456789012:configuration/my-freertos-config
+                      status: ACTIVE
+                      version: '1'
+                      hardwarePlatform: ESP32-D0WD
+                      creationDate: '2025-01-15T09:00:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /software-configuration-records/{configId}:
+    get:
+      operationId: describeSoftwareConfiguration
+      summary: Describe Software Configuration
+      description: Gets a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    softwareConfigurationId: sc-abc12345
+                    name: my-freertos-config
+                    description: FreeRTOS config for sensor nodes
+                    arn: arn:aws:freertos:us-east-1:123456789012:configuration/my-freertos-config
+                    status: ACTIVE
+                    version: '1'
+                    hardwarePlatform: ESP32-D0WD
+                    creationDate: '2025-01-15T09:00:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateSoftwareConfiguration
+      summary: Update Software Configuration
+      description: Updates a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSoftwareConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    softwareConfigurationId: sc-abc12345
+                    name: my-freertos-config
+                    description: FreeRTOS config for sensor nodes
+                    arn: arn:aws:freertos:us-east-1:123456789012:configuration/my-freertos-config
+                    status: ACTIVE
+                    version: '1'
+                    hardwarePlatform: ESP32-D0WD
+                    creationDate: '2025-01-15T09:00:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteSoftwareConfiguration
+      summary: Delete Software Configuration
+      description: Deletes a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration to delete.
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SoftwareConfigurationSummary:
+      type: object
+      description: Summary of a FreeRTOS software configuration.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        hardwarePlatform:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+    UpdateSoftwareConfigurationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    SoftwareConfiguration:
+      type: object
+      description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        arn:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        version:
+          type: string
+        hardwarePlatform:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+      required:
+      - name
+      - hardwarePlatform
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+  securitySchemes:
+    awsSigV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
