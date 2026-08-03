@@ -1,0 +1,18 @@
+{
+  "provider": "amazon-freertos",
+  "sources": [
+    "amazon-freertos-ota-updates-api-openapi.yml",
+    "amazon-freertos-software-configurations-api-openapi.yml",
+    "amazon-freertos-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-freertos-ota-updates-api-openapi.yml",
+    "amazon-freertos-software-configurations-api-openapi.yml",
+    "amazon-freertos-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

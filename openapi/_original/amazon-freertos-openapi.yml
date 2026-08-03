@@ -1,0 +1,729 @@
+openapi: 3.1.0
+info:
+  title: Amazon FreeRTOS Management API
+  description: The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.
+  version: '2021-11-29'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://iot.{region}.amazonaws.com
+  variables:
+    region:
+      default: us-east-1
+security:
+- awsSigV4: []
+tags:
+- name: Software Configurations
+  description: FreeRTOS software configuration management
+- name: OTA Updates
+  description: Over-the-air firmware update management
+- name: Device Registry
+  description: IoT device registration and management
+- name: Tags
+  description: Resource metadata labels
+paths:
+  /software-configuration-records:
+    post:
+      operationId: createSoftwareConfiguration
+      summary: Create Software Configuration
+      description: Creates a FreeRTOS software configuration record specifying the libraries and settings for a target hardware platform.
+      tags:
+      - Software Configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSoftwareConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value: &id001
+                    softwareConfigurationId: sc-abc12345
+                    name: my-freertos-config
+                    description: FreeRTOS config for sensor nodes
+                    arn: arn:aws:freertos:us-east-1:123456789012:configuration/my-freertos-config
+                    status: ACTIVE
+                    version: '1'
+                    hardwarePlatform: ESP32-D0WD
+                    creationDate: '2025-01-15T09:00:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listSoftwareConfigurations
+      summary: List Software Configurations
+      description: Lists FreeRTOS software configuration records.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+        description: Maximum results to return.
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  softwareConfigurationList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SoftwareConfigurationSummary'
+                  nextToken:
+                    type: string
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    softwareConfigurationList:
+                    - *id001
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /software-configuration-records/{configId}:
+    get:
+      operationId: describeSoftwareConfiguration
+      summary: Describe Software Configuration
+      description: Gets a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value: *id001
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateSoftwareConfiguration
+      summary: Update Software Configuration
+      description: Updates a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSoftwareConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SoftwareConfiguration'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value: *id001
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteSoftwareConfiguration
+      summary: Delete Software Configuration
+      description: Deletes a FreeRTOS software configuration record.
+      tags:
+      - Software Configurations
+      parameters:
+      - name: configId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the software configuration to delete.
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /otaUpdates:
+    post:
+      operationId: createOtaUpdate
+      summary: Create OTA Update
+      description: Creates an AWS IoT OTA update on a target group of devices.
+      tags:
+      - OTA Updates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOtaUpdateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OtaUpdate'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value: &id002
+                    otaUpdateId: ota-abc12345
+                    otaUpdateArn: arn:aws:iot:us-east-1:123456789012:otaupdate/ota-abc12345
+                    otaUpdateStatus: CREATE_COMPLETE
+                    description: FreeRTOS OTA update v2.0
+                    targets:
+                    - arn:aws:iot:us-east-1:123456789012:thing/sensor-001
+                    creationDate: '2025-06-01T10:00:00Z'
+                    lastModifiedDate: '2025-06-01T10:05:00Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listOtaUpdates
+      summary: List OTA Updates
+      description: Lists OTA updates.
+      tags:
+      - OTA Updates
+      parameters:
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+        description: Maximum results.
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token.
+      - name: otaUpdateStatus
+        in: query
+        schema:
+          type: string
+        description: Filter by OTA update status.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  otaUpdates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OtaUpdateSummary'
+                  nextToken:
+                    type: string
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    otaUpdates:
+                    - *id002
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /otaUpdates/{otaUpdateId}:
+    get:
+      operationId: getOtaUpdate
+      summary: Get OTA Update
+      description: Gets an OTA update.
+      tags:
+      - OTA Updates
+      parameters:
+      - name: otaUpdateId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The OTA update ID.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OtaUpdateInfo'
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    otaUpdateInfo: *id002
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteOtaUpdate
+      summary: Delete OTA Update
+      description: Deletes an OTA update.
+      tags:
+      - OTA Updates
+      parameters:
+      - name: otaUpdateId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The OTA update ID to delete.
+      - name: deleteStream
+        in: query
+        schema:
+          type: boolean
+        description: Whether to delete the stream associated with the update.
+      - name: forceDeleteAWSJob
+        in: query
+        schema:
+          type: boolean
+        description: Whether to force delete the associated AWS IoT job.
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tags/{resourceArn}:
+    get:
+      operationId: listTagsForResource
+      summary: List Tags For Resource
+      description: Lists the tags (metadata) you have assigned to the resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ARN of the resource.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: object
+                    additionalProperties:
+                      type: string
+              examples:
+                default:
+                  x-microcks-default: true
+                  value:
+                    tags:
+                      Environment: Production
+                      HardwarePlatform: ESP32
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: tagResource
+      summary: Tag Resource
+      description: Adds to or modifies the tags of the given resource.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The ARN of the resource.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: object
+                  additionalProperties:
+                    type: string
+              required:
+              - tags
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    awsSigV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+  schemas:
+    SoftwareConfiguration:
+      type: object
+      description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        arn:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        version:
+          type: string
+        hardwarePlatform:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+      required:
+      - name
+      - hardwarePlatform
+    SoftwareConfigurationSummary:
+      type: object
+      description: Summary of a FreeRTOS software configuration.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        hardwarePlatform:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+    OtaUpdate:
+      type: object
+      description: An over-the-air (OTA) firmware update job for FreeRTOS devices.
+      properties:
+        otaUpdateId:
+          type: string
+        otaUpdateArn:
+          type: string
+        otaUpdateStatus:
+          type: string
+          enum:
+          - CREATE_PENDING
+          - CREATE_IN_PROGRESS
+          - CREATE_COMPLETE
+          - CREATE_FAILED
+        description:
+          type: string
+        targets:
+          type: array
+          items:
+            type: string
+        protocols:
+          type: array
+          items:
+            type: string
+            enum:
+            - MQTT
+            - HTTP
+        creationDate:
+          type: string
+          format: date-time
+        lastModifiedDate:
+          type: string
+          format: date-time
+        awsIotJobId:
+          type: string
+        awsIotJobArn:
+          type: string
+      required:
+      - otaUpdateId
+      - targets
+    OtaUpdateSummary:
+      type: object
+      description: Summary of an OTA update.
+      properties:
+        otaUpdateId:
+          type: string
+        otaUpdateArn:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+    OtaUpdateInfo:
+      type: object
+      description: Detailed information about an OTA update.
+      properties:
+        otaUpdateInfo:
+          $ref: '#/components/schemas/OtaUpdate'
+    ErrorResponse:
+      type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    UpdateSoftwareConfigurationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    CreateOtaUpdateRequest:
+      type: object
+      required:
+      - otaUpdateId
+      - targets
+      - files
+      properties:
+        otaUpdateId:
+          type: string
+        description:
+          type: string
+        targets:
+          type: array
+          items:
+            type: string
+        protocols:
+          type: array
+          items:
+            type: string
+        targetSelection:
+          type: string
+          enum:
+          - CONTINUOUS
+          - SNAPSHOT
+        files:
+          type: array
+          items:
+            type: object
+        roleArn:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
