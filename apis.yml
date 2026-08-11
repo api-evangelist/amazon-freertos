@@ -181,6 +181,19 @@ apis:
   - type: APIReference
     url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
 common:
+  - type: IssueTracker
+    url: https://github.com/aws/amazon-freertos/issues
+  - type: Releases
+    url: https://github.com/aws/amazon-freertos/releases
+  - type: SecurityPolicy
+    url: https://github.com/aws/amazon-freertos/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/aws/amazon-freertos/blob/main/.github/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/aws/amazon-freertos/blob/main/.github/CONTRIBUTING.md
+  - type: License
+    name: MIT
+    url: https://github.com/aws/amazon-freertos/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/amazon-freertos-agentic-access.yml
   - type: TrustCenter
