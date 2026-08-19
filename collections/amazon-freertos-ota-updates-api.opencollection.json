@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FreeRTOS Management OTA Updates API",
+    "version": "2021-11-29"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OTA Updates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List OTA Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates",
+            "params": [
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token."
+              },
+              {
+                "name": "otaUpdateStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by OTA update status."
+              }
+            ]
+          },
+          "docs": "Lists OTA updates."
+        },
+        {
+          "info": {
+            "name": "Create OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an AWS IoT OTA update on a target group of devices."
+        },
+        {
+          "info": {
+            "name": "Get OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates/:otaUpdateId",
+            "params": [
+              {
+                "name": "otaUpdateId",
+                "value": "",
+                "type": "path",
+                "description": "The OTA update ID."
+              }
+            ]
+          },
+          "docs": "Gets an OTA update."
+        },
+        {
+          "info": {
+            "name": "Delete OTA Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://iot.{region}.amazonaws.com/otaUpdates/:otaUpdateId",
+            "params": [
+              {
+                "name": "otaUpdateId",
+                "value": "",
+                "type": "path",
+                "description": "The OTA update ID to delete."
+              },
+              {
+                "name": "deleteStream",
+                "value": "",
+                "type": "query",
+                "description": "Whether to delete the stream associated with the update."
+              },
+              {
+                "name": "forceDeleteAWSJob",
+                "value": "",
+                "type": "query",
+                "description": "Whether to force delete the associated AWS IoT job."
+              }
+            ]
+          },
+          "docs": "Deletes an OTA update."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
