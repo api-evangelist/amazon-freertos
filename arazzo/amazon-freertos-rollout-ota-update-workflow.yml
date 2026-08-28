@@ -13,8 +13,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: freertosApi
-  url: ../openapi/amazon-freertos-openapi.yml
+- name: otaUpdatesApi
+  url: ../openapi/amazon-freertos-ota-updates-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: rollout-ota-update

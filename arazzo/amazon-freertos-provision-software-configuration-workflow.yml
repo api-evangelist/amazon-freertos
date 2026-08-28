@@ -16,8 +16,8 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: freertosApi
-  url: ../openapi/amazon-freertos-openapi.yml
+- name: softwareConfigurationsApi
+  url: ../openapi/amazon-freertos-software-configurations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-software-configuration
