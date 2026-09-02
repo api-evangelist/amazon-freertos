@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon FreeRTOS Management OTA Updates Software Configurations API
   description: The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.
@@ -295,13 +295,30 @@ components:
         creationDate:
           type: string
           format: date-time
-    UpdateSoftwareConfigurationRequest:
+    ErrorResponse:
       type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
       properties:
         name:
           type: string
         description:
           type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     SoftwareConfiguration:
       type: object
       description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
@@ -332,29 +349,12 @@ components:
       required:
       - name
       - hardwarePlatform
-    CreateSoftwareConfigurationRequest:
+    UpdateSoftwareConfigurationRequest:
       type: object
-      required:
-      - name
-      - hardwarePlatform
       properties:
         name:
           type: string
         description:
-          type: string
-        hardwarePlatform:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-    ErrorResponse:
-      type: object
-      description: Standard error response.
-      properties:
-        message:
-          type: string
-        code:
           type: string
   securitySchemes:
     awsSigV4:
