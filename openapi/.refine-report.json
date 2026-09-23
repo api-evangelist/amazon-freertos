@@ -1,9 +1,7 @@
 {
   "provider": "amazon-freertos",
   "sources": [
-    "amazon-freertos-ota-updates-api-openapi.yml",
-    "amazon-freertos-software-configurations-api-openapi.yml",
-    "amazon-freertos-tags-api-openapi.yml"
+    "_original/amazon-freertos-openapi.yml"
   ],
   "outputs": [
     "amazon-freertos-ota-updates-api-openapi.yml",
@@ -14,7 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-freertos-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-freertos-ota-updates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-freertos-software-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-freertos-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

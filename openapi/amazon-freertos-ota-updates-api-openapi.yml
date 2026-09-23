@@ -277,6 +277,17 @@ components:
           type: object
           additionalProperties:
             type: string
+    OtaUpdateSummary:
+      type: object
+      description: Summary of an OTA update.
+      properties:
+        otaUpdateId:
+          type: string
+        otaUpdateArn:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
     OtaUpdate:
       type: object
       description: An over-the-air (OTA) firmware update job for FreeRTOS devices.
@@ -318,17 +329,6 @@ components:
       required:
       - otaUpdateId
       - targets
-    OtaUpdateSummary:
-      type: object
-      description: Summary of an OTA update.
-      properties:
-        otaUpdateId:
-          type: string
-        otaUpdateArn:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
     OtaUpdateInfo:
       type: object
       description: Detailed information about an OTA update.

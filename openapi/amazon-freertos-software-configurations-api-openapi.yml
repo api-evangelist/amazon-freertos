@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon FreeRTOS Management OTA Updates Software Configurations API
+  title: Amazon FreeRTOS Management Software Configurations API
   description: The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.
   version: '2021-11-29'
   contact:
@@ -278,23 +278,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SoftwareConfigurationSummary:
-      type: object
-      description: Summary of a FreeRTOS software configuration.
-      properties:
-        softwareConfigurationId:
-          type: string
-        name:
-          type: string
-        hardwarePlatform:
-          type: string
-        status:
-          type: string
-        version:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
     ErrorResponse:
       type: object
       description: Standard error response.
@@ -303,22 +286,6 @@ components:
           type: string
         code:
           type: string
-    CreateSoftwareConfigurationRequest:
-      type: object
-      required:
-      - name
-      - hardwarePlatform
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        hardwarePlatform:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
     SoftwareConfiguration:
       type: object
       description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
@@ -356,6 +323,39 @@ components:
           type: string
         description:
           type: string
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    SoftwareConfigurationSummary:
+      type: object
+      description: Summary of a FreeRTOS software configuration.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        hardwarePlatform:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
   securitySchemes:
     awsSigV4:
       type: apiKey

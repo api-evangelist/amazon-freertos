@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon FreeRTOS Management OTA Updates Tags API
+  title: Amazon FreeRTOS Management Tags API
   description: The Amazon FreeRTOS Management API provides programmatic access to manage FreeRTOS software configurations, OTA updates, and device connectivity for microcontroller-based IoT devices.
   version: '2021-11-29'
   contact:
