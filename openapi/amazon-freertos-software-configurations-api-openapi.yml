@@ -278,14 +278,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
+    CreateSoftwareConfigurationRequest:
       type: object
-      description: Standard error response.
+      required:
+      - name
+      - hardwarePlatform
       properties:
-        message:
+        name:
           type: string
-        code:
+        description:
           type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     SoftwareConfiguration:
       type: object
       description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
@@ -316,29 +324,14 @@ components:
       required:
       - name
       - hardwarePlatform
-    UpdateSoftwareConfigurationRequest:
+    ErrorResponse:
       type: object
+      description: Standard error response.
       properties:
-        name:
+        message:
           type: string
-        description:
+        code:
           type: string
-    CreateSoftwareConfigurationRequest:
-      type: object
-      required:
-      - name
-      - hardwarePlatform
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        hardwarePlatform:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
     SoftwareConfigurationSummary:
       type: object
       description: Summary of a FreeRTOS software configuration.
@@ -356,6 +349,13 @@ components:
         creationDate:
           type: string
           format: date-time
+    UpdateSoftwareConfigurationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
   securitySchemes:
     awsSigV4:
       type: apiKey

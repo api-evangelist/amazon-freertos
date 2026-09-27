@@ -235,14 +235,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
+    OtaUpdateInfo:
       type: object
-      description: Standard error response.
+      description: Detailed information about an OTA update.
       properties:
-        message:
-          type: string
-        code:
-          type: string
+        otaUpdateInfo:
+          $ref: '#/components/schemas/OtaUpdate'
     CreateOtaUpdateRequest:
       type: object
       required:
@@ -277,6 +275,14 @@ components:
           type: object
           additionalProperties:
             type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     OtaUpdateSummary:
       type: object
       description: Summary of an OTA update.
@@ -329,12 +335,6 @@ components:
       required:
       - otaUpdateId
       - targets
-    OtaUpdateInfo:
-      type: object
-      description: Detailed information about an OTA update.
-      properties:
-        otaUpdateInfo:
-          $ref: '#/components/schemas/OtaUpdate'
   securitySchemes:
     awsSigV4:
       type: apiKey
