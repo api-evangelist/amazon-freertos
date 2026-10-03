@@ -278,52 +278,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CreateSoftwareConfigurationRequest:
-      type: object
-      required:
-      - name
-      - hardwarePlatform
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        hardwarePlatform:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-    SoftwareConfiguration:
-      type: object
-      description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
-      properties:
-        softwareConfigurationId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        arn:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        version:
-          type: string
-        hardwarePlatform:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
-        lastUpdatedDate:
-          type: string
-          format: date-time
-      required:
-      - name
-      - hardwarePlatform
     ErrorResponse:
       type: object
       description: Standard error response.
@@ -356,6 +310,52 @@ components:
           type: string
         description:
           type: string
+    SoftwareConfiguration:
+      type: object
+      description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        arn:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        version:
+          type: string
+        hardwarePlatform:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+      required:
+      - name
+      - hardwarePlatform
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
   securitySchemes:
     awsSigV4:
       type: apiKey
