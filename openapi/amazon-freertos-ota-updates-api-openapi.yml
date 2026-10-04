@@ -235,14 +235,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
+    OtaUpdateInfo:
       type: object
-      description: Standard error response.
+      description: Detailed information about an OTA update.
       properties:
-        message:
-          type: string
-        code:
-          type: string
+        otaUpdateInfo:
+          $ref: '#/components/schemas/OtaUpdate'
     OtaUpdate:
       type: object
       description: An over-the-air (OTA) firmware update job for FreeRTOS devices.
@@ -284,23 +282,14 @@ components:
       required:
       - otaUpdateId
       - targets
-    OtaUpdateInfo:
+    ErrorResponse:
       type: object
-      description: Detailed information about an OTA update.
+      description: Standard error response.
       properties:
-        otaUpdateInfo:
-          $ref: '#/components/schemas/OtaUpdate'
-    OtaUpdateSummary:
-      type: object
-      description: Summary of an OTA update.
-      properties:
-        otaUpdateId:
+        message:
           type: string
-        otaUpdateArn:
+        code:
           type: string
-        creationDate:
-          type: string
-          format: date-time
     CreateOtaUpdateRequest:
       type: object
       required:
@@ -335,6 +324,17 @@ components:
           type: object
           additionalProperties:
             type: string
+    OtaUpdateSummary:
+      type: object
+      description: Summary of an OTA update.
+      properties:
+        otaUpdateId:
+          type: string
+        otaUpdateArn:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
   securitySchemes:
     awsSigV4:
       type: apiKey

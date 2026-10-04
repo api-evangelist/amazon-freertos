@@ -278,38 +278,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response.
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    SoftwareConfigurationSummary:
-      type: object
-      description: Summary of a FreeRTOS software configuration.
-      properties:
-        softwareConfigurationId:
-          type: string
-        name:
-          type: string
-        hardwarePlatform:
-          type: string
-        status:
-          type: string
-        version:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
-    UpdateSoftwareConfigurationRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     SoftwareConfiguration:
       type: object
       description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
@@ -340,6 +308,23 @@ components:
       required:
       - name
       - hardwarePlatform
+    SoftwareConfigurationSummary:
+      type: object
+      description: Summary of a FreeRTOS software configuration.
+      properties:
+        softwareConfigurationId:
+          type: string
+        name:
+          type: string
+        hardwarePlatform:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
     CreateSoftwareConfigurationRequest:
       type: object
       required:
@@ -356,6 +341,21 @@ components:
           type: object
           additionalProperties:
             type: string
+    UpdateSoftwareConfigurationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
   securitySchemes:
     awsSigV4:
       type: apiKey
