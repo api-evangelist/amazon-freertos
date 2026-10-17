@@ -278,6 +278,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateSoftwareConfigurationRequest:
+      type: object
+      required:
+      - name
+      - hardwarePlatform
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        hardwarePlatform:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    UpdateSoftwareConfigurationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response.
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     SoftwareConfiguration:
       type: object
       description: A FreeRTOS software configuration record specifying firmware libraries and settings for a hardware platform.
@@ -325,37 +356,6 @@ components:
         creationDate:
           type: string
           format: date-time
-    CreateSoftwareConfigurationRequest:
-      type: object
-      required:
-      - name
-      - hardwarePlatform
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        hardwarePlatform:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-    UpdateSoftwareConfigurationRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    ErrorResponse:
-      type: object
-      description: Standard error response.
-      properties:
-        message:
-          type: string
-        code:
-          type: string
   securitySchemes:
     awsSigV4:
       type: apiKey

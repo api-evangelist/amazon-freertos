@@ -235,12 +235,59 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OtaUpdateInfo:
+    ErrorResponse:
       type: object
-      description: Detailed information about an OTA update.
+      description: Standard error response.
       properties:
-        otaUpdateInfo:
-          $ref: '#/components/schemas/OtaUpdate'
+        message:
+          type: string
+        code:
+          type: string
+    OtaUpdateSummary:
+      type: object
+      description: Summary of an OTA update.
+      properties:
+        otaUpdateId:
+          type: string
+        otaUpdateArn:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+    CreateOtaUpdateRequest:
+      type: object
+      required:
+      - otaUpdateId
+      - targets
+      - files
+      properties:
+        otaUpdateId:
+          type: string
+        description:
+          type: string
+        targets:
+          type: array
+          items:
+            type: string
+        protocols:
+          type: array
+          items:
+            type: string
+        targetSelection:
+          type: string
+          enum:
+          - CONTINUOUS
+          - SNAPSHOT
+        files:
+          type: array
+          items:
+            type: object
+        roleArn:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     OtaUpdate:
       type: object
       description: An over-the-air (OTA) firmware update job for FreeRTOS devices.
@@ -282,59 +329,12 @@ components:
       required:
       - otaUpdateId
       - targets
-    ErrorResponse:
+    OtaUpdateInfo:
       type: object
-      description: Standard error response.
+      description: Detailed information about an OTA update.
       properties:
-        message:
-          type: string
-        code:
-          type: string
-    CreateOtaUpdateRequest:
-      type: object
-      required:
-      - otaUpdateId
-      - targets
-      - files
-      properties:
-        otaUpdateId:
-          type: string
-        description:
-          type: string
-        targets:
-          type: array
-          items:
-            type: string
-        protocols:
-          type: array
-          items:
-            type: string
-        targetSelection:
-          type: string
-          enum:
-          - CONTINUOUS
-          - SNAPSHOT
-        files:
-          type: array
-          items:
-            type: object
-        roleArn:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-    OtaUpdateSummary:
-      type: object
-      description: Summary of an OTA update.
-      properties:
-        otaUpdateId:
-          type: string
-        otaUpdateArn:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
+        otaUpdateInfo:
+          $ref: '#/components/schemas/OtaUpdate'
   securitySchemes:
     awsSigV4:
       type: apiKey
