@@ -1,4 +1,4 @@
-# Amazon FreeRTOS (amazon-freertos)
+# Amazon FreeRTOS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,92 +66,197 @@
 
 Amazon FreeRTOS is an open source, real-time operating system for microcontrollers that makes it easy to program, deploy, secure, connect, and manage small, low-power edge devices. It extends the FreeRTOS kernel with libraries for secure connectivity, over-the-air updates, and more.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml)
+**Areas:** AWS · Embedded Systems · IoT · Microcontrollers · RTOS
 
-## Scope
+## Amazon FreeRTOS on APIs.io
 
-- **Type:** Index
+Everything profiled for Amazon FreeRTOS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-freertos/](https://apis.io/providers/amazon-freertos/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- AWS
-- Embedded Systems
-- IoT
-- Microcontrollers
-- RTOS
+- [Amazon FreeRTOS OTA Updates API](https://apis.io/apis/amazon-freertos/amazon-freertos-ota-updates-api/) — Over-the-air firmware update management
+- [Amazon FreeRTOS Software Configurations API](https://apis.io/apis/amazon-freertos/amazon-freertos-software-configurations-api/) — FreeRTOS software configuration management
+- [Amazon FreeRTOS Tags API](https://apis.io/apis/amazon-freertos/amazon-freertos-tags-api/) — Resource metadata labels
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (6)
 
-### Amazon FreeRTOS API
+Multi-step workflows that chain operations into a business task.
 
-The Amazon FreeRTOS API provides programmatic access to manage FreeRTOS software configurations and over-the-air update jobs for IoT devices running FreeRTOS.
+- [Amazon FreeRTOS Decommission OTA Update](https://apis.io/arazzos/amazon-freertos/amazon-freertos-decommission-ota-update-workflow/)
+- [Amazon FreeRTOS Decommission Software Configuration](https://apis.io/arazzos/amazon-freertos/amazon-freertos-decommission-software-configuration-workflow/)
+- [Amazon FreeRTOS Provision Software Configuration](https://apis.io/arazzos/amazon-freertos/amazon-freertos-provision-software-configuration-workflow/)
+- [Amazon FreeRTOS Roll Out OTA Update](https://apis.io/arazzos/amazon-freertos/amazon-freertos-rollout-ota-update-workflow/)
+- [Amazon FreeRTOS Tag Software Configuration](https://apis.io/arazzos/amazon-freertos/amazon-freertos-tag-software-configuration-workflow/)
+- [Amazon FreeRTOS Update Software Configuration](https://apis.io/arazzos/amazon-freertos/amazon-freertos-update-software-configuration-workflow/)
 
-- **Human URL:** [https://aws.amazon.com/freertos/](https://aws.amazon.com/freertos/)
-- **Base URL:** `https://iot.amazonaws.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Embedded Systems
-- IoT
-- RTOS
+- [Amazon Freertos Agentic Access](https://apis.io/agentic-access/amazon-freertos/amazon-freertos-agentic-access/)
 
-#### Properties
+#### JSON Schema (5)
 
-- [Documentation](https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html)
-- [OpenAPI](openapi/amazon-freertos-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-freertos.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-freertos.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/amazon-freertos-software-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-freertos-ota-update-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-freertos-device-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-freertos-ota-file-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-freertos-tag-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/amazon-freertos-software-configuration-structure.json)
-- [JSON Structure](json-structure/amazon-freertos-ota-update-structure.json)
-- [JSON Structure](json-structure/amazon-freertos-device-structure.json)
-- [JSON Structure](json-structure/amazon-freertos-ota-file-structure.json)
-- [JSON Structure](json-structure/amazon-freertos-tag-structure.json)
-- [Example](examples/amazon-freertos-software-configuration-example.json)
-- [Example](examples/amazon-freertos-ota-update-example.json)
-- [Example](examples/amazon-freertos-device-example.json)
-- [Example](examples/amazon-freertos-ota-file-example.json)
-- [Example](examples/amazon-freertos-tag-example.json)
-- [Getting Started](https://aws.amazon.com/freertos/getting-started/)
-- [Pricing](https://aws.amazon.com/freertos/pricing/)
-- [F A Q](https://aws.amazon.com/freertos/faqs/)
-- [API Reference](https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html)
+The data models the API reads and writes.
 
-## Common Properties
+- [Device](https://apis.io/schemas/amazon-freertos/amazon-freertos-device/)
+- [OtaFile](https://apis.io/schemas/amazon-freertos/amazon-freertos-ota-file/)
+- [OtaUpdate](https://apis.io/schemas/amazon-freertos/amazon-freertos-ota-update/)
+- [SoftwareConfiguration](https://apis.io/schemas/amazon-freertos/amazon-freertos-software-configuration/)
+- [Tag](https://apis.io/schemas/amazon-freertos/amazon-freertos-tag/)
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://aws.amazon.com/freertos/)
+#### JSON Structure (5)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Freertos Device Structure](https://apis.io/json-structure/amazon-freertos/amazon-freertos-device-structure/)
+- [Amazon Freertos Ota File Structure](https://apis.io/json-structure/amazon-freertos/amazon-freertos-ota-file-structure/)
+- [Amazon Freertos Ota Update Structure](https://apis.io/json-structure/amazon-freertos/amazon-freertos-ota-update-structure/)
+- [Amazon Freertos Software Configuration Structure](https://apis.io/json-structure/amazon-freertos/amazon-freertos-software-configuration-structure/)
+- [Amazon Freertos Tag Structure](https://apis.io/json-structure/amazon-freertos/amazon-freertos-tag-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Freertos Context](https://apis.io/jsonld/amazon-freertos/amazon-freertos-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon FreeRTOS Vocabulary](https://apis.io/vocabularies/amazon-freertos/amazon-freertos-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Amazon Freertos Device Example](https://apis.io/examples/amazon-freertos/amazon-freertos-device-example/)
+- [Amazon Freertos Ota File Example](https://apis.io/examples/amazon-freertos/amazon-freertos-ota-file-example/)
+- [Amazon Freertos Ota Update Example](https://apis.io/examples/amazon-freertos/amazon-freertos-ota-update-example/)
+- [Amazon Freertos Software Configuration Example](https://apis.io/examples/amazon-freertos/amazon-freertos-software-configuration-example/)
+- [Amazon Freertos Tag Example](https://apis.io/examples/amazon-freertos/amazon-freertos-tag-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Amazon FreeRTOS Management API](https://apis.io/collections/amazon-freertos/open-amazon-freertos/)
+- [Amazon FreeRTOS Management OTA Updates API](https://apis.io/collections/amazon-freertos/open-amazon-freertos-ota-updates-api/)
+- [Amazon FreeRTOS Management OTA Updates Software Configurations API](https://apis.io/collections/amazon-freertos/open-amazon-freertos-software-configurations-api/)
+- [Amazon FreeRTOS Management OTA Updates Tags API](https://apis.io/collections/amazon-freertos/open-amazon-freertos-tags-api/)
+- [Amazon FreeRTOS Management API](https://apis.io/collections/amazon-freertos/postman-amazon-freertos/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Freertos Ota Updates Api Phrasing Overlay](https://apis.io/overlays/amazon-freertos/amazon-freertos-ota-updates-api-phrasing-overlay/)
+- [Amazon Freertos Software Configurations Api Phrasing Overlay](https://apis.io/overlays/amazon-freertos/amazon-freertos-software-configurations-api-phrasing-overlay/)
+- [Amazon Freertos Tags Api Phrasing Overlay](https://apis.io/overlays/amazon-freertos/amazon-freertos-tags-api-phrasing-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon FreeRTOS — jsonschema rules](https://apis.io/rules/amazon-freertos/amazon-freertos-jsonschema-spectral-rules/)
+- [Amazon FreeRTOS API Rules](https://apis.io/rules/amazon-freertos/amazon-freertos-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Freertos Authentication](https://apis.io/security/amazon-freertos/amazon-freertos-authentication/)
+- [Amazon Freertos Domain Security](https://apis.io/security/amazon-freertos/amazon-freertos-domain-security/)
+- [Amazon Freertos Trust Center](https://apis.io/security/amazon-freertos/amazon-freertos-trust-center/)
+- [Amazon Freertos Vulnerability Disclosure](https://apis.io/security/amazon-freertos/amazon-freertos-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Freertos Plans Pricing](https://apis.io/plans/amazon-freertos/amazon-freertos-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Freertos Rate Limits](https://apis.io/rate-limits/amazon-freertos/amazon-freertos-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Freertos Finops](https://apis.io/finops/amazon-freertos/amazon-freertos-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/freertos/)
 - [Documentation](https://docs.aws.amazon.com/freertos/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/premiumsupport/)
 - [Blog](https://aws.amazon.com/blogs/iot/)
-- [GitHub Organization](https://github.com/aws)
-- [GitHub Repository](https://github.com/aws/amazon-freertos)
-- [Console](https://console.aws.amazon.com/iot/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/amazon-freertos)
-- [Spectral Rules](rules/amazon-freertos-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-freertos-vocabulary.yaml)
-- [JSON-LD](json-ld/amazon-freertos-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 65.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 74.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 60.5 |
+
+**Agent readiness 30.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-freertos/](https://apis.io/providers/amazon-freertos/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon FreeRTOS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-freertos/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
