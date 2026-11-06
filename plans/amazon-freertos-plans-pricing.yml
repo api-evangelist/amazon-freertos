@@ -45,11 +45,12 @@ plans:
   included_quota: 2 products
   overage: one-time fee of 50% or 100% of annual subscription price for late subscribe/renew
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
-  units: []
+  units:
+  - period
   plans:
   - name: FreeRTOS
     access: other
@@ -63,7 +64,7 @@ x-canonical:
     model: hybrid
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
   - name: FreeRTOS EMP - Multiple products using EMP libraries
@@ -71,6 +72,6 @@ x-canonical:
     model: hybrid
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
