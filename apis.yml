@@ -1,10 +1,14 @@
 aid: amazon-freertos
+
 name: Amazon FreeRTOS
+
 description: >-
   Amazon FreeRTOS is an open source, real-time operating system for microcontrollers that makes it easy to program,
   deploy, secure, connect, and manage small, low-power edge devices. It extends the FreeRTOS kernel with libraries for
   secure connectivity, over-the-air updates, and more.
+
 type: Index
+
 deliveryModel:
   model: open-core
   license: MIT
@@ -19,6 +23,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -34,9 +39,10 @@ accessModel:
   - plans
   - authentication
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-freertos.png
+
 tags:
   - Amazon Web Services
   - Embedded Systems
@@ -49,162 +55,62 @@ tags_raw:
   - IoT
   - Microcontrollers
   - RTOS
+
 url: https://raw.githubusercontent.com/api-evangelist/amazon-freertos/refs/heads/main/apis.yml
+
 created: '2026-03-16'
+
 modified: '2026-05-19'
+
 specificationVersion: '0.23'
-apis:
-- aid: amazon-freertos:amazon-freertos-ota-updates-api
-  name: Amazon FreeRTOS OTA Updates API
-  description: Over-the-air firmware update management
-  humanURL: https://aws.amazon.com/freertos/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - OTA Updates
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-freertos-ota-updates-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-software-configuration-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-update-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-device-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-file-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-tag-schema.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-software-configuration-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-update-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-device-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-file-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-tag-structure.json
-  - type: Examples
-    url: examples/amazon-freertos-software-configuration-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-update-example.json
-  - type: Examples
-    url: examples/amazon-freertos-device-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-file-example.json
-  - type: Examples
-    url: examples/amazon-freertos-tag-example.json
-  - type: GettingStarted
-    url: https://aws.amazon.com/freertos/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/freertos/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/freertos/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
-- aid: amazon-freertos:amazon-freertos-software-configurations-api
-  name: Amazon FreeRTOS Software Configurations API
-  description: FreeRTOS software configuration management
-  humanURL: https://aws.amazon.com/freertos/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Software Configurations
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-freertos-software-configurations-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-software-configuration-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-update-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-device-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-file-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-tag-schema.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-software-configuration-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-update-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-device-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-file-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-tag-structure.json
-  - type: Examples
-    url: examples/amazon-freertos-software-configuration-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-update-example.json
-  - type: Examples
-    url: examples/amazon-freertos-device-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-file-example.json
-  - type: Examples
-    url: examples/amazon-freertos-tag-example.json
-  - type: GettingStarted
-    url: https://aws.amazon.com/freertos/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/freertos/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/freertos/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
-- aid: amazon-freertos:amazon-freertos-tags-api
-  name: Amazon FreeRTOS Tags API
-  description: Resource metadata labels
-  humanURL: https://aws.amazon.com/freertos/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-freertos-tags-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-software-configuration-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-update-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-device-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-ota-file-schema.json
-  - type: JSONSchema
-    url: json-schema/amazon-freertos-tag-schema.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-software-configuration-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-update-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-device-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-ota-file-structure.json
-  - type: JSONStructure
-    url: json-structure/amazon-freertos-tag-structure.json
-  - type: Examples
-    url: examples/amazon-freertos-software-configuration-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-update-example.json
-  - type: Examples
-    url: examples/amazon-freertos-device-example.json
-  - type: Examples
-    url: examples/amazon-freertos-ota-file-example.json
-  - type: Examples
-    url: examples/amazon-freertos-tag-example.json
-  - type: GettingStarted
-    url: https://aws.amazon.com/freertos/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/freertos/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/freertos/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+
 common:
+  - type: Spectral
+    url: rules/amazon-freertos-spectral-rules.yml
+  - type: Spectral
+    url: rules/amazon-freertos-rules.yml
+  - type: Spectral
+    url: rules/amazon-freertos-jsonschema-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/amazon-freertos-vocabulary.yml
+  - type: DataModel
+    url: data-model/amazon-freertos-data-model.yml
+  - type: Conventions
+    url: conventions/amazon-freertos-conventions.yml
+  - type: Compliance
+    url: https://aws.amazon.com/compliance/
+  - type: Lifecycle
+    url: lifecycle/amazon-freertos-lifecycle.yml
+  - type: ErrorCatalog
+    url: errors/amazon-freertos-problem-types.yml
+  - type: Conformance
+    url: conformance/amazon-freertos-conformance.yml
+  - type: Overlay
+    url: overlays/amazon-freertos-ota-updates-api-phrasing-overlay.yaml
+  - type: LLMsTxt
+    url: llms/amazon-freertos-llms.txt
+  - type: SecurityTxt
+    url: well-known/amazon-freertos-security.txt
+  - type: WellKnown
+    url: well-known/amazon-freertos-well-known.yml
+  - type: Hosts
+    url: hosts/amazon-freertos-hosts.yml
+  - type: Vendors
+    url: vendors/amazon-freertos-vendors.yml
+  - type: SDKs
+    url: packages/amazon-freertos-packages.yml
+  - type: Packages
+    url: packages/amazon-freertos-packages.yml
+  - type: SignUp
+    url: https://signin.aws.amazon.com/signup?request_type=builderId
+  - type: Newsroom
+    url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/AmazonRDS/latest/gettingstartedguide/what-is-rds
   - type: Plans
     url: plans/amazon-freertos-plans-pricing.yml
   - type: RateLimits
@@ -336,6 +242,157 @@ common:
         description: Automate FreeRTOS fleet infrastructure provisioning with infrastructure-as-code templates.
   - type: Integrations
     url: https://aws.amazon.com/marketplace
+  - type: UsageTerms
+    url: terms/amazon-freertos-terms-of-service.yml
+  - type: Eligibility
+    url: eligibility/amazon-freertos-eligibility.yml
+  - type: AIPreferences
+    url: ai-preferences/amazon-freertos-ai-preferences.yml
+
+apis:
+- aid: amazon-freertos:amazon-freertos-ota-updates-api
+  name: Amazon FreeRTOS OTA Updates API
+  description: Over-the-air firmware update management
+  humanURL: https://aws.amazon.com/freertos/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - OTA Updates
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-freertos-ota-updates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-ota-update-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-device-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-ota-file-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-tag-schema.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-software-configuration-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-update-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-device-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-file-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-tag-structure.json
+  - type: Examples
+    url: examples/amazon-freertos-software-configuration-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-update-example.json
+  - type: Examples
+    url: examples/amazon-freertos-device-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-file-example.json
+  - type: Examples
+    url: examples/amazon-freertos-tag-example.json
+  - type: GettingStarted
+    url: https://aws.amazon.com/freertos/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/freertos/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/freertos/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
+- aid: amazon-freertos:amazon-freertos-software-configurations-api
+  name: Amazon FreeRTOS Software Configurations API
+  description: FreeRTOS software configuration management
+  humanURL: https://aws.amazon.com/freertos/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Software Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-freertos-software-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-software-configuration-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-device-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-ota-file-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-tag-schema.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-software-configuration-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-update-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-device-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-file-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-tag-structure.json
+  - type: Examples
+    url: examples/amazon-freertos-software-configuration-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-update-example.json
+  - type: Examples
+    url: examples/amazon-freertos-device-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-file-example.json
+  - type: Examples
+    url: examples/amazon-freertos-tag-example.json
+  - type: GettingStarted
+    url: https://aws.amazon.com/freertos/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/freertos/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/freertos/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
+- aid: amazon-freertos:amazon-freertos-tags-api
+  name: Amazon FreeRTOS Tags API
+  description: Resource metadata labels
+  humanURL: https://aws.amazon.com/freertos/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-freertos-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/what-is-amazon-freertos.html
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-device-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-ota-file-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-freertos-tag-schema.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-software-configuration-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-update-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-device-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-ota-file-structure.json
+  - type: JSONStructure
+    url: json-structure/amazon-freertos-tag-structure.json
+  - type: Examples
+    url: examples/amazon-freertos-software-configuration-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-update-example.json
+  - type: Examples
+    url: examples/amazon-freertos-device-example.json
+  - type: Examples
+    url: examples/amazon-freertos-ota-file-example.json
+  - type: Examples
+    url: examples/amazon-freertos-tag-example.json
+  - type: GettingStarted
+    url: https://aws.amazon.com/freertos/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/freertos/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/freertos/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/freertos/latest/userguide/freertos-lib-ota-api.html
+
 integrations:
   - name: Sign in
   - name: Agent Mode
@@ -346,8 +403,12 @@ integrations:
   - name: Become a Channel Partner
   - name: Sell in AWS Marketplace
   - name: Manage Your Account
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+
 x-parent: amazon-web-services
+
 x-relationship: product
+x-enrichment:
+  date: '2026-11-11'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v6

@@ -5,6 +5,9 @@ artifacts:
   agentic-access/amazon-freertos-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-freertos-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   arazzo/amazon-freertos-decommission-ota-update-workflow.yml:
     method: derived
     evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
@@ -25,6 +28,15 @@ artifacts:
     evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   authentication/amazon-freertos-authentication.yml:
     method: derived
+    evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/amazon-freertos-changelog.yml:
+    method: searched
     evidence: declared in the artifact
   collections/amazon-freertos-ota-updates-api.opencollection.json:
     method: derived
@@ -50,6 +62,21 @@ artifacts:
   collections/amazon-freertos.postman_collection.json:
     method: derived
     evidence: openapi/amazon-freertos
+  conformance/amazon-freertos-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-freertos-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-freertos-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  eligibility/amazon-freertos-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
+  errors/amazon-freertos-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/amazon-freertos-device-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -71,6 +98,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-freertos-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -113,7 +143,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -182,6 +212,21 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-freertos-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-freertos-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-freertos-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-freertos-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/_original/amazon-freertos-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -204,6 +249,12 @@ artifacts:
   overlays/amazon-freertos-tags-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
+  packages/amazon-freertos-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-freertos-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-freertos-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -217,6 +268,9 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   rules/amazon-freertos-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-freertos-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-freertos-spectral-rules.yml:
@@ -234,6 +288,24 @@ artifacts:
   sla/amazon-freertos-sla.yml:
     method: generated
     evidence: declared in the artifact
+  terms/amazon-freertos-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-freertos-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/amazon-freertos-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-freertos-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-freertos-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-freertos-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-freertos-well-known.yml:
     method: unknown
     evidence: no authorship recorded
